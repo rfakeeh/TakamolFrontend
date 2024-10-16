@@ -1,0 +1,744 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" integrity="sha384-dpuaG1suU0eT09tx5plTaGMLBsfDLzUCCUXOY2j/LSvXYuG6Bqs43ALlhIqAJVRb" crossorigin="anonymous">
+    <style>
+
+      body {
+        background-color: #F9FAFB !important;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      .navbar {
+        min-height: 80px !important;
+        background-color: #FFFFFF !important;
+        border-bottom: 1px solid #F2F4F7 !important;
+      }
+
+      .navbar, .header, .content, .footer {
+        padding-left: 80px !important;
+        padding-right: 80px !important;
+      }
+
+      .navbar.fixed {
+          position: fixed;
+          top: 0;
+          right: 0;
+          left: 0;
+          z-index: 1030;
+      }
+
+      .header {
+        margin-top: 130px;
+      }
+
+      .navbar-text {
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        color: #475467 !important;
+      }
+
+      .navbar-brand {
+        margin-right: 3px !important;
+        margin-left: 50px !important;
+      }
+
+      ul.nav {
+        column-gap: 24px !important;
+      }
+
+      .nav-link {
+        margin-right: 0!important;
+        padding-right: 0!important;
+      }
+
+      .btn {
+        padding: 10px 18px !important;
+        border-radius: 8px !important;
+        border-width: 2px !important;
+      }
+
+      .btn-signup, .btn-signout {
+        color: #FFFFFF !important;
+        border-color: #03669D !important;
+      }
+
+      .btn-signup:hover, .btn-signout:hover {
+        background-color: #FFFFFF !important;
+        color: #03669D !important;
+      }
+
+      .btn-criteria {
+        border-color: #03669D !important;
+        background-color: #FFFFFF !important;
+        border: 1px solid #D0D5DD !important;
+        border-radius: 8px !important;
+        color: #344054 !important;
+        font-size: 18px !important;
+        width: 180px !important;
+        height: 60px !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin-bottom: 25px !important;
+      }
+
+      .btn-criteria.active {
+        background-color: #03669D !important;
+        color: #FFFFFF !important;
+      }
+
+      .btn-criteria:hover
+      {
+        box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05), 0px 0px 0px 4px #F2F4F7 !important;
+      }
+
+      .d-flex {
+        align-items: center !important;
+      }
+
+      .avatar {
+        border: 1px solid #D0D5DD !important;
+      }
+
+      .bg-green {
+        background-color: #12B76A !important;
+      }
+
+      .bg-blue {
+        background-color: #03669D !important;
+      }
+
+      h2 {
+        color: #03669D !important;
+        font-size: 40px !important;
+        font-weight: 700 !important;
+      }
+
+      .breadcrumb-item {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+      }
+
+      .breadcrumb-item a {
+        color: #475467 !important;
+        text-decoration: none !important;
+      }
+
+      .breadcrumb-item i {
+        margin-right: 10px !important;
+      }
+
+      .breadcrumb-item.active {
+        font-weight: 700 !important;
+      }
+
+      .content .card {
+        border-radius: 16px !important;
+        min-height: 800px !important;
+      }
+
+      .content .card-body {
+        margin-top: 40px !important;
+        margin-bottom: 40px !important;
+        background-image: url('img/png/shape08.png') !important;
+        background-repeat: no-repeat !important;
+        background-position: bottom 20px right 20px !important;
+        background-size: 165px 230px !important;
+      }
+
+      .footer {
+        margin-top: 100px !important;
+        margin-bottom: 0!important;
+      }
+
+      .footer .container-fluid {  
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .footer .row {
+        margin-bottom: 50px !important;
+        padding-top: 25px !important;
+      }
+
+      .footer .col-lg-6.left {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        row-gap: 10px;
+      }
+
+      .footer .col-lg-6.right {
+        display: flex;
+        column-gap: 25px;
+        align-items: center;
+      }
+
+      .footer p {
+        margin-top: 30px !important;
+        margin-bottom: 30px !important;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: right;
+        color: #475467;
+        width: 360px;
+      }
+
+      .footer .col-lg-6.left p {
+        direction: ltr !important;
+        text-align: left !important;
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+        font-weight: 700 !important;
+      }
+
+      .footer .col-lg-6.left p.copyright {
+        font-weight: normal !important;
+      }
+
+      /********************************************/
+
+      .main .left {
+        justify-content: left;
+        display: flex;
+      }
+
+      .main .employee, .main .company {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #D0D5DD;
+        border-radius: 8px;
+        width: 400px;
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        column-gap: 12px;
+        justify-content: space-between;
+      }
+
+      .main .employee#employee-role {
+        width: auto;
+        justify-content: flex-start;
+      }
+
+      .main span {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 27px;
+        color: #475467;
+      }
+
+      .main span.label {
+        color: #03669D;
+      }
+
+      /****************** Accordion *****************/
+
+      .accordion {
+          width: 100%;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          margin-bottom: 10px;
+          overflow: hidden;
+      }
+
+      .accordion-header {
+          background-color: #F6F8FA;
+          cursor: pointer;
+          padding: 15px;
+          font-size: 16px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+
+      .chevron {
+          display: inline-block;
+          width: 12px;
+          height: 12px;
+          border-right: 2px solid black;
+          border-bottom: 2px solid black;
+          transform: rotate(45deg);
+          transition: transform 0.3s ease;
+      }
+
+      .active .chevron {
+          transform: rotate(-135deg);
+      }
+
+      .accordion-body {
+          display: none;
+          padding: 15px;
+          color: #475467;
+      }
+
+      .active .accordion-body {
+          display: block;
+      }
+
+      .accordion-body strong {
+          font-size: 18px;
+      }
+
+      .accordion-body p, .accordion-body ul {
+          margin: 10px 0;
+          font-size: 14px;
+      }
+
+      .accordion-footer {
+          display: none;
+          text-align: left;
+          padding-left: 15px;
+          padding-bottom: 15px;
+      }
+
+      .active .accordion-footer {
+          display: block;
+      }
+
+      /****************** Help Dialog *****************/
+
+      .help-dialog {
+        position: fixed;
+        bottom: 25px;
+        left: 115px;
+        z-index: 1000;
+      }
+
+      .help-dialog-icon {
+          width: 100px;
+          height: 100px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+
+      .help-dialog-icon img {
+          max-width: 100%;
+          height: auto;
+      }
+
+      /****************** Popover *****************/
+
+      .custom-popover {
+        --bs-popover-max-width: 300px;
+        --bs-popover-header-bg: #07B9E4;
+        --bs-popover-header-color: #FFFFFF;
+        --bs-popover-border-color: #07B9E4;
+      }
+
+
+    </style>
+  </head>
+  <body style="bg-body-tertiary" dir="rtl">
+    
+    <div class="help-dialog" tabindex="0" data-bs-toggle="popover" data-bs-custom-class="custom-popover" data-bs-trigger="hover focus" data-bs-title="المساعد الذكي" data-bs-content="تحدث الى المساعد الذكي ليساعدك في التحول الى نظام الاستحقاق">
+        <div class="help-dialog-icon">
+            <!-- Custom Help Icon Image -->
+            <a href="#"><img src="img/png/shape07.png" alt="Help Icon"/></a>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar fixed">
+      <!-- Navbar Container -->
+      <div class="container-fluid">
+        <!-- Right -->
+        <div class="d-flex">
+          <!-- Brand -->
+          <a class="navbar-brand" href="index.html">
+            <img src="img/png/logo01.png" alt="تكامل" height="32"/>
+          </a> <!-- End of Brand -->
+          <!-- Nav -->
+          <ul class="nav">
+            <li class="nav-item"><a href="index.html" class="nav-link navbar-text link-body-emphasis px-2 active" aria-current="page">الرئيسية</a></li>
+            <li class="nav-item"><a href="#" class="nav-link navbar-text link-body-emphasis px-2">الخصائص</a></li>
+            <li class="nav-item"><a href="#" class="nav-link navbar-text link-body-emphasis px-2">اتصل بنا</a></li>
+          </ul> <!-- End of Nav -->
+        </div> <!-- End of Right -->
+        <!-- Left -->
+        <div class="d-flex" style="column-gap: 5px;">
+          <a class="btn navbar-text bg-blue btn-signup hidden" href="#" role="button">تسجيل جديد</a>
+          <a class="btn navbar-text hidden" href="#" role="button">تسجيل دخول</a>
+          <a class="btn navbar-text bg-blue btn-signout" href="index.html" role="button">تسجيل خروج</a>
+        </div> <!-- End of Left -->
+      </div> <!-- End of Navbar Container -->
+    </nav> <!-- End of Navbar -->
+
+    <!-- Header -->
+    <header class="header">
+      <!-- Header Container -->
+      <div class="container-fluid">
+        <!-- Row --> 
+        <div class="row">
+          <!-- Right Column -->
+          <div class="col-lg-6 text-start">
+            <!-- Title -->
+            <h2 class="mb-4" id="header-title"></h2>
+            <!-- Breadcrumb -->
+            <nav style="--bs-breadcrumb-divider: '';" aria-label="breadcrumb">
+              <ol class="breadcrumb justify-content-start">
+                <li class="breadcrumb-item">
+                  <a href="#">نظام تكامل</a>
+                  <i class="bi bi-chevron-left"></i>
+                </li>
+                <li id="breadcrumb-item1" class="breadcrumb-item active" aria-current="page"></li>
+              </ol>
+            </nav> <!-- End of Breadcrumb -->
+          </div> <!-- End of Right Column -->
+          <!-- Left Column -->
+          <div class="col-lg-6 d-flex align-items-center justify-content-end">
+            <!-- Notifications -->
+            <div class="position-relative">
+              <img src="img/png/icon19.png" alt="الاشعارات"  height="45" />
+              <span class="position-absolute top-0 end-0 translate-middle badge rounded-pill" style="width: 20px; height: 20px; font-size: 10px; background-color: #0969DA !important;">
+                1
+              </span>
+            </div> <!-- End of Notifications -->
+            <!-- User Info -->
+            <div class="me-3">
+              <h5 class="mb-0">بدر محمد</h5>
+              <p class="text-muted mb-0">مشرف</p>
+            </div> <!-- End of User Info -->
+            <!-- Avatar -->
+            <div class="position-relative d-inline-block">
+              <img src="img/png/avatar01.png" class="rounded-circle avatar" alt="صورة المستخدم" width="65" height="65">
+              <span class="position-absolute bottom-0 start-0 translate-middle p-2 bg-green border border-light rounded-circle" style="width: 15px; height: 15px;">
+                <span class="visually-hidden">متصل</span>
+              </span>
+            </div> <!-- End of Avatar -->
+          </div> <!-- End of Left Column -->
+        </div> <!-- End of Row -->
+      </div> <!-- End of Header Container -->
+    </header> <!-- End of Header -->
+
+    <!-- Content -->
+    <div class="content">
+      <!-- Content Container -->
+      <div class="container-fluid">
+        <!-- Card -->
+        <div class="card">
+          <div class="card-body">
+            <!-- Row -->
+            <div class="row">
+              <!-- Right Column -->
+              <div class="col-lg-2">
+                  <a id="criteria0" class="btn navbar-text btn-criteria bg-blue active" href="?" role="button">جميع الحسابات</a>
+                  <a id="criteria1" class="btn navbar-text btn-criteria" href="?criteria=1" role="button" tabindex="0" data-bs-toggle="popover" data-bs-custom-class="custom-popover" data-bs-placement="left" data-bs-trigger="hover focus" data-bs-title="معيار رقم 5: تكاليف الاقتراض" data-bs-content="يحدد هذا المعيار المعالجة المحاسبية لتكاليف الاقتراض، سواءً بالإثبات الفوري على أنها مصروفات أو اتاحة رسملة تكاليف الاقتراض التي تعود - بشكل مباشر - إلى اقتناء، أو إنشاء، أو إنتاج أصل مؤهل">تكاليف الاقتراض</a>
+                  <a id="criteria2" class="btn navbar-text btn-criteria" href="?criteria=2" role="button" tabindex="0" data-bs-toggle="popover" data-bs-custom-class="custom-popover" data-bs-placement="left" data-bs-trigger="hover focus" data-bs-title="معيار رقم 9: الايراد من التعاملات التبادلية" data-bs-content="بيان المعالجة المحاسبية للإيراد الناشئ عن المعاملات والأحداث التبادلية" >الايرادات</a>
+                  <a id="criteria3" class="btn navbar-text btn-criteria" href="?criteria=3" role="button" tabindex="0" data-bs-toggle="popover" data-bs-custom-class="custom-popover" data-bs-placement="left" data-bs-trigger="hover focus" data-bs-title="معيار رقم 39: منافع الموظفين" data-bs-content="تحديد متطلبات المحاسبة والإفصاح عن منافع الموظفين">منافع الموظفين</a>
+                  <a id="criteria4" class="btn navbar-text btn-criteria" href="?criteria=4" role="button" tabindex="0" data-bs-toggle="popover" data-bs-custom-class="custom-popover" data-bs-placement="left" data-bs-trigger="hover focus" data-bs-title="معيار رقم 12: المخزون" data-bs-content="تحديد المعالجة المحاسبية للمخزون، كما أن المسألة الرئيسة في المحاسبة عن المخزون هي مبلغ التكلفة الذي يجب أن يثبت على أنه أصل ويرحل إلى أن تُثبت الإيرادات ذات الصلة">المخزون</a>                
+              </div> <!-- End of Right Column -->
+              <!-- Left Column -->
+              <div class="col-lg-10" style="border-right: 1px solid #E4E7EC;">
+                <!-- Main -->
+                <div class="main">
+                  <!-- Main Container -->
+                  <div class="container-fluid">
+
+                    <!-- Row --> 
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="employee" id="employee-id">
+                          <span class="label">رقم الموظف :</span>
+                          <span class="value">1126647434</span>
+                          <img src="img/png/icon05.png" height="24" width="24" style="cursor: pointer;" />
+                        </div>
+                      </div>
+                      <div class="col-lg-6 left">
+                        <div class="company" id="company-id">
+                          <span class="label">رقم المنظمة :</span>
+                          <span class="value">115664</span>
+                          <img src="img/png/icon05.png" height="24" width="24" style="cursor: pointer;" />
+                        </div>
+                      </div>
+                    </div> <!-- End of Row --> 
+
+                    <!-- Row --> 
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="employee" id="employee-name">
+                          <span class="label">اسم الموظف :</span>
+                          <span class="value">بدر محمد</span>
+                          <img src="img/png/icon05.png" height="24" width="24" style="cursor: pointer;" />
+                        </div>
+                      </div>
+                      <div class="col-lg-6 left">
+                        <div class="company" id="company-name">
+                          <span class="label">اسم المنظمة :</span>
+                          <span class="value">شركة المدار الشمالي</span>
+                          <img src="img/png/icon05.png" height="24" width="24" style="cursor: pointer;" />
+                        </div>
+                      </div>
+                    </div> <!-- End of Row -->  
+
+                    <!-- Row --> 
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="employee" id="employee-role">
+                          <span class="label">نطاق عمل الموظف :</span>
+                          <span class="value">تحرير القيود في دفتر اليومية وتصدير القيود إلى دفتر الإسناد</span>
+                        </div>
+                      </div>
+                    </div> <!-- End of Row --> 
+
+                    <!-- Row --> 
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="criteria" id="criteria-desc"> 
+                          <!-- Accordion --> 
+                          <div class="accordion">
+                              <div class="accordion-header">
+                                  <span class="label">نص المعيار</span>
+                                  <span class="chevron"></span>
+                              </div>
+                              <div id="accordion-body" class="accordion-body"></div>
+                              <div class="accordion-footer">
+                                  <img src="img/png/icon05.png" height="24" width="24" style="cursor: pointer;" />
+                              </div>
+                          </div> <!-- End of Accordion --> 
+                        </div>
+                      </div>
+                    </div> <!-- End of Row --> 
+
+                  </div> <!-- End of Main Container -->
+                </div> <!-- End of Main -->
+              </div> <!-- End of Left Column -->
+            </div> <!-- End of Row -->
+          </div>
+        </div> <!-- End of Card -->
+      </div> <!-- End of Content Container -->
+    </div> <!-- End of Content -->
+    
+
+    <!-- Footer -->
+    <div class="footer">
+      <!-- Footer Container -->
+      <div class="container-fluid">
+        <!-- Row --> 
+        <div class="row">
+          <!-- Right Column -->
+          <div class="col-lg-6 text-start">
+            <img src="img/png/logo01.png" alt="تكامل" height="32">
+            <p>منصة ذكاء اصطناعي تدعم الجهات المتحولة لنظام الاستحقاق، لتمكين الشفافية والحوكمة في القطاع العام.</p>           
+            <!-- Nav -->
+            <ul class="nav">
+              <li class="nav-item"><a href="#" class="nav-link navbar-text link-body-emphasis px-2">Overview</a></li>
+              <li class="nav-item"><a href="#" class="nav-link navbar-text link-body-emphasis px-2">Features</a></li>
+              <li class="nav-item"><a href="#" class="nav-link navbar-text link-body-emphasis px-2">Pricing</a></li>
+              <li class="nav-item"><a href="#" class="nav-link navbar-text link-body-emphasis px-2">Careers</a></li>
+              <li class="nav-item"><a href="#" class="nav-link navbar-text link-body-emphasis px-2">Help</a></li>
+              <li class="nav-item"><a href="#" class="nav-link navbar-text link-body-emphasis px-2">Privacy</a></li>
+            </ul> <!-- End of Nav -->
+          </div> <!-- End of Right Column -->
+          <!-- Left Column -->
+          <div class="col-lg-6 left">
+              <p>Get the app</p>
+              <img src="img/png/apple01.png" alt="تكامل" width="135" style="cursor: pointer;" />
+              <img src="img/png/android01.png" alt="تكامل" width="135" style="cursor: pointer;" />
+          </div> <!-- End of Left Column -->
+        </div> <!-- End of Row -->
+
+        <!-- Row --> 
+        <div class="row" style="border-top: 1px solid #E4E7EC !important;">
+          <!-- Right Column -->
+          <div class="col-lg-6 right">
+            <img src="img/png/social04.png" alt="تكامل" width="24" height="24" style="cursor: pointer;" />
+            <img src="img/png/social03.png" alt="تكامل" width="24" height="24" style="cursor: pointer;" />
+            <img src="img/png/social02.png" alt="تكامل" width="24" height="24" style="cursor: pointer;" />
+            <img src="img/png/social01.png" alt="تكامل" width="24" height="24" style="cursor: pointer;" />
+          </div> <!-- End of Right Column -->
+          <!-- Left Column -->
+          <div class="col-lg-6 left">
+            <p class="copyright">© 2024 TAKAMOL. All rights reserved.</p>
+          </div> <!-- End of Left Column -->
+        </div> <!-- End of Row -->
+
+
+      </div> <!-- End of Footer Container -->
+    </div> <!-- End of Footer -->
+
+    <div class="container-fluid">
+      <!-- Row --> 
+      <div class="row">
+        <!-- Column -->
+        <div class="col-lg-12 bg-blue" style="height: 130px !important"></div> <!-- End of Column -->
+      </div> <!-- End of Row -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+
+    <script>
+
+        document.title = `نظام تكامل - جميع الحسابات`;
+        document.getElementById('header-title').innerHTML = `جميع الحسابات`;
+        document.getElementById('breadcrumb-item1').innerHTML = `جميع الحسابات`;
+        document.getElementById('criteria-desc').style.display = 'none';
+        for (let i = 0; i <= 4; i++) {
+            document.getElementById(`criteria${i}`).classList.remove('bg-blue', 'active');
+        }
+        document.getElementById('criteria0').classList.add('bg-blue', 'active');
+        document.getElementById('accordion-body').innerHTML = ``;
+
+        // Get the query parameters from the current URL
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // Example: Get the value of a specific parameter, like 'name'
+        const title = urlParams.get('title');
+        const criteria = urlParams.get('criteria');
+        const age = urlParams.get('age');
+
+        // Output the values to the page
+        if (title != null)
+          document.title = `${title}`;
+
+        if (criteria != null && parseInt(criteria, 10) >= 1 && parseInt(criteria, 10) <= 4) {
+
+          var criteriaText = "تكاليف الاقتراض";
+          document.getElementById('accordion-body').innerHTML = 
+          document.getElementById('accordion-body').innerHTML = `
+
+            <strong>الهدف</strong>
+            <p>يحدد هذا المعيار المعالجة المحاسبية لتكاليف الاقتراض، سواء بالإثبات الفوري على أنها مصروفات أو اتاحة رسملة تكاليف الاقتراض التي تعود - بشكل مباشر - إلى اقتناء، أو إنشاء، أو إنتاج أصل مؤهل.</p>
+
+            <strong>النطاق</strong>
+            <ul>
+                <li>المحاسبة عن تكاليف الاقتراض</li>
+            </ul>
+
+            <strong>الإفصاح</strong>
+            <ul>
+                <li>السياسة المحاسبية المطبقة لتكاليف الاقتراض.</li>
+                <li>مبلغ تكاليف الاقتراض المرسملة خلال الفترة.</li>
+                <li>معدل الرسملة المستخدم لتحديد مبلغ تكاليف الاقتراض المؤهل للرسملة.</li>
+            </ul>
+
+            <strong>الخيار المعتمد</strong>
+            <p>إثبات تكاليف الاقتراض في الفترة التي يتم تكبدها فيها.</p>
+                                    
+          `;
+
+          if (parseInt(criteria, 10) == 2) {
+            criteriaText = "الايرادات";
+            document.getElementById('accordion-body').innerHTML = `
+
+              <strong>الهدف</strong>
+              <p>بيان المعالجة المحاسبية للإيراد الناشئ عن المعاملات والأحداث التبادلية.</p>
+
+              <strong>النطاق</strong>
+              <p>في المحاسبة عن الإيراد الناشئ عن:</p>
+              <ul>
+                  <li>تقديم الخدمات.</li>
+                  <li>بيع السلع.</li>
+                  <li>استخدام أطراف أخرى لأصول الجهة.</li>
+              </ul>
+
+              <strong>الإفصاح</strong>
+              <ul>
+                  <li>السياسات المحاسبية التي تبنتها لإثبات الإيراد، والطرق التي تبنتها لتحديد مرحلة إنجاز المعاملات الخاصة بتقديم الخدمات.</li>
+                  <li>قيمة كل فئة مهمة من الإيراد المثبت خلال الفترة بما في ذلك الإيراد.</li>
+                  <li>قيمة الإيراد الناشئ عن مبادلات السلع أو الخدمات المضمنة في كل فئة مهمة من الإيراد.</li>
+              </ul>
+                                  
+          `;
+
+          }
+          else if (parseInt(criteria, 10) == 3) {
+            criteriaText = "منافع الموظفين";
+            document.getElementById('accordion-body').innerHTML = `
+
+                
+              <strong>الهدف</strong>
+              <p>تحديد متطلبات المحاسبة والإفصاح عن منافع الموظفين.</p>
+
+              <strong>النطاق</strong>
+              <ul>
+                  <li>المحاسبة عن جميع منافع الموظفين، باستثناء المعاملات على أساس السهم.</li>
+                  <li>المنافع المقدمة للموظفين أو لمن يعولونهم، ويجوز تسويتها بمدفوعات تؤدى إما بشكل مباشر للموظفين أو بشكل غير مباشر ممن يعولون.</li>
+              </ul>
+
+              <strong>الإفصاح</strong>
+              <ul>
+                  <li>المبالغ المثبتة كمصاريف لبرنامج المساهمات المحددة.</li>
+                  <li>معلومات توضح خصائص برامج المنافع المحددة والخاصة بها والمخاطر المرتبطة بها، تحدد وتوضح المبالغ الواردة في قوائمها المالية من برنامج المنافع المحددة الخاصة بها.</li>
+                  <li>وصف لكيفية تأثير برنامج المنافع المحددة الخاصة بها على مبلغ التدفقات النقدية المستقبلية للجهة وتوقيتها ودرجة عدم التأكد بشأنها.</li>
+                  <li>لا يتطلب إفصاحات محددة من منافع إنهاء التوظيف.</li>
+              </ul>
+
+              <strong>الخيار المعتمد</strong>
+              <ul>
+                  <li>أن تعين الجهة اكتوارياً مؤهلًا في قياس التزامات منافع ما بعد انتهاء التوظيف.</li>
+                  <li>إثبات مكونات التكلفة المحددة بالإجمالي .</li>
+              </ul>
+                                  
+          `;
+          }
+          else if (parseInt(criteria, 10) == 4) {
+            criteriaText = "المخزون";
+            document.getElementById('accordion-body').innerHTML = `
+
+              <strong>الهدف</strong>
+              <p>تحديد المعالجة المحاسبية للمخزون، كما أن المسألة الرئيسة في المحاسبة عن المخزون هي مبلغ التكلفة الذي يجب أن يثبت على أنه أصل ويرحل إلى أن تُثبت الإيرادات ذات الصلة.</p>
+
+              <strong>النطاق</strong>
+              <p>المحاسبة عن جميع بنود المخزون، باستثناء:</p>
+              <ul>
+                  <li>‌الأعمال تحت التنفيذ الناشئة بموجب عقود الإنشاء.</li>
+                  <li>الأدوات المالية.</li>
+                  <li>الأصول البيولوجية.</li>
+                  <li>الأعمال تحت التنفيذ للخدمات التي ستُقدَّم بدون مقابل أو بمقابل رمزي مباشرة.</li>
+              </ul>
+
+              <strong>الإفصاح</strong>
+              <ul>
+                  <li>السياسات المحاسبية المتبعة في قياس المخزون،ومجموع القيمة الدفترية للمخزون.</li>
+                  <li>مبلغ المخزون المُثبت على أنه مصروف خلال الفترة.</li>
+                  <li>مبلغ أي تخفيض لقيمة المخزون.</li>
+                  <li>الأحداث اللاحقة المؤثرة على قيمة المخزون.</li>
+              </ul>
+
+              <strong>الخيار المعتمد</strong>
+              <p>احتساب تكلفة المخزون المنصرف باستخدام طريقة متوسط التكلفة المرجح ويمكن استخدام طريقة الوارد أولاً صادر أولاً مع الإفصاح عن أسباب استخدامها.</p>
+                                  
+          `;
+          }
+
+          document.title = `نظام تكامل - حسابات ${criteriaText}`;
+          document.getElementById('header-title').innerHTML = `حسابات ${criteriaText}`;
+          document.getElementById('breadcrumb-item1').innerHTML = `حسابات ${criteriaText}`;
+          document.getElementById('criteria-desc').style.display = 'block';
+          document.getElementById('criteria0').classList.remove('bg-blue', 'active');
+          document.getElementById("criteria"+criteria).classList.add('bg-blue', 'active');
+        }
+        //document.getElementById('output').innerHTML = `الاسم: ${name}, العمر: ${age}`;
+
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const accordion = this.parentElement;
+                accordion.classList.toggle('active');
+            });
+        });
+
+        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+    
+    </script>
+
+  </body>
+</html>
