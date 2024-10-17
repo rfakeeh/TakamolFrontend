@@ -92,12 +92,13 @@
         margin-bottom: 25px !important;
       }
 
-      .btn-criteria.active, .btn-action.active span {
+      .btn-criteria.active {
         background-color: #03669D !important;
         color: #FFFFFF !important;
       }
 
-      .btn-criteria:hover, .btn-action:hover {
+      .btn-criteria:hover
+      {
         box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05), 0px 0px 0px 4px #F2F4F7 !important;
       }
 
@@ -216,7 +217,7 @@
         display: flex;
       }
 
-      .main .employee, .main .company, .main .account, .main .actions {
+      .main .employee, .main .company {
         padding: 10px;
         margin-bottom: 20px;
         border: 1px solid #D0D5DD;
@@ -235,18 +236,9 @@
         justify-content: flex-start;
       }
 
-      .main .criteria, .main .accounts, .main .actions {
-        margin-bottom: 20px;
-      }
-
-      .main .actions {
-        border: none !important;
-        width: 100% !important;
-      }
-
       .main span {
         font-weight: 700;
-        font-size: 18px;
+        font-size: 20px;
         line-height: 27px;
         color: #475467;
       }
@@ -349,145 +341,6 @@
         --bs-popover-header-color: #FFFFFF;
         --bs-popover-border-color: #07B9E4;
       }
-
-      /****************** Filter *****************/
-
-      #account-filter-input, #account-filter-input:focus, #account-filter-input:active,
-      .btn-close:focus, .btn-close:active {
-        border: none !important;
-        box-shadow: none !important;
-      }
-      
-      #account-filter-input::placeholder, #account-number-input::placeholder {
-          color: #D0D5DD;
-          opacity: 1;
-      }
-
-      #account-number-input {
-        border: 1px solid #D0D5DD !important;
-      }
-
-      #account-number-input:focus, #account-number-input:active {
-        box-shadow: none !important;
-      }
-
-      #account-filter-capsules {
-        display: flex;
-        gap: 15px;
-      }
-
-      .filter-capsule {
-        width: fit-content !important;
-        padding: 15px 10px !important;
-        border: 1px solid #D0D5DD;
-        border-radius: 8px;
-      }
-
-      .filter-capsule strong {
-        padding: 0 !important;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 20px;
-        color: #344054;
-      }
-
-      .alert-dismissible.filter-capsule strong {
-          padding-right: 30px !important;
-      }
-
-      /****************** Table *****************/
-
-      .table {
-        border: 1px solid #D0D5DD !important;
-      }
-
-      th, td {
-        background-color: #F9FAFB !important;
-        font-size: 16px !important;
-        line-height: 130% !important;
-        color: #475467 !important;
-        font-weight: 700 !important;
-      }
-
-      th {
-        color: #03669D !important;
-      }
-
-      /****************** Pagination *****************/
-
-      .pagination-container {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-top: 20px;
-      }
-
-      /* Style for pagination */
-      .pagination {
-          list-style-type: none;
-          display: flex;
-          gap: 8px;
-          margin-bottom: 0 !important;
-      }
-
-      .pagination li {
-          display: inline;
-      }
-
-      .pagination a,
-      .pagination span {
-          text-decoration: none;
-          padding: 6px 12px;
-          padding-right: 0 !important;
-          color: #007bff;
-          cursor: pointer;
-      }
-
-      .pagination span {
-          background-color: #e9ecef;
-          color: #6c757d;
-      }
-
-      .pagination a:hover {
-          background-color: #f1f1f1;
-      }
-
-      .pagination a.disabled {
-          color: #6c757d;
-          pointer-events: none;
-          border-color: #ddd;
-      }
-
-      .pagination img {
-          width: 16px;
-          height: 16px;
-          display: inline-block;
-      }
-
-      /* Style for showing page range and total */
-      .page-info {
-          font-size: 14px;
-          color: #333;
-          direction: ltr;
-      }
-
-      /****************** Actions *****************/
-
-      .btn-action {
-        width: 175px !important;
-        height: 40px !important;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 5px 18px !important;
-        border: 1px solid #D0D5DD !important;
-        gap: 5px;
-      } 
-
-      .btn-action span {
-        font-size: 14px !important;
-        font-weight: 700;        
-      } 
 
 
     </style>
@@ -663,144 +516,6 @@
                       </div>
                     </div> <!-- End of Row --> 
 
-                    <!-- Row --> 
-                    <div class="row">
-                      <div class="col-lg-7">
-                        
-                        <div id="account-filter-capsules">
-                          <div class="alert fade show filter-capsule" role="alert">
-                            <strong>جميع الحسابات</strong>
-                          </div>
-                        </div>
-
-                      </div>
-                      <div class="col-lg-5 left">
-                        <div class="account" id="account-filter">
-                          <div class="input-group">
-                            <input type="text" class="form-control" id="account-filter-input" placeholder="ادخل نصا لفلترة الحسابات">
-                          </div>
-                          <img src="img/png/icon25.png" height="24" width="24" style="cursor: pointer;" />
-                        </div>
-                      </div>
-                    </div> <!-- End of Row -->  
-
-                    <!-- Row --> 
-                    <div class="row">
-                      <div class="col-lg-12">
-                        <div class="accounts" id="accounts">
-
-
-                            <table id="accounts-table" class="table table-bordered">
-                              <thead>
-                                <tr>
-                                  <th scope="col">المعيار</th>
-                                  <th scope="col">رقم الحساب</th>
-                                  <th scope="col">اسم الحساب</th>
-                                  <th scope="col">القيود المحرّرة</th>
-                                  <th scope="col">القيود المصدّرة</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>تكاليف الاقتراض</td>
-                                  <td>001</td>
-                                  <td>بنك الانماء</td>
-                                  <td>1</td>
-                                  <td>1</td>
-                                </tr>
-                                <tr>
-                                  <td>الايرادات</td>
-                                  <td>002</td>
-                                  <td>شركة وادي الهيل</td>
-                                  <td>0</td>
-                                  <td>0</td>
-                                </tr>
-                                <tr>
-                                  <td>تكاليف الاقتراض</td>
-                                  <td>003</td>
-                                  <td>بنك الراجحي</td>
-                                  <td>0</td>
-                                  <td>0</td>
-                                </tr>
-                              </tbody>
-                            </table>
-
-                        </div>
-                      </div>
-                    </div> <!-- End of Row -->  
-
-                    <!-- Row --> 
-                    <div class="row">
-                      <div class="col-lg-12">
-                        <div class="accounts" id="accounts-pagination">
-      
-                          <div class="pagination-container">
-                              <!-- Pagination -->
-                              <ul class="pagination">
-                                  <li><a href="#" class="disabled"><img src="img/png/icon27.png" alt="Previous Arrow"> Previous</a></li>
-                                  <li><a href="#" class="disabled">1</a></li>
-                                  <li><a href="#" class="disabled">Next <img src="img/png/icon28.png" alt="Previous Arrow"></a></li>
-                              </ul>
-                              <!-- Display of items per page -->
-                              <div class="page-info" id="page-info"></div>
-                          </div>
-
-                        </div>
-                      </div>
-                    </div> <!-- End of Row -->   
-
-                    <!-- Row --> 
-                    <div class="row">
-                      <div class="col-lg-7">
-                        <div class="actions" id="go-to-account">
-
-                            <div class="col-auto">
-                              <img src="img/png/icon04.png" width="24" height="24" />
-                            </div>
-                            <div class="col-auto">
-                              <span>رقم الحساب</span>
-                            </div>
-                            <div class="col">
-                              <input id="account-number-input" type="text" class="form-control" placeholder="001">
-                            </div>
-                            <div class="col-auto">
-                              <a class="btn btn-action bg-blue active" href="?" role="button" tabindex="0" data-bs-toggle="popover" data-bs-placement="left" data-bs-custom-class="custom-popover" data-bs-trigger="hover focus" data-bs-title="الذهاب الى الحساب" data-bs-content="استعرض معلومات الحساب وقائمة القيود المحاسبية المسجلة فيه">
-                                <span>الذهاب الى الحساب</span>
-                              </a>
-                            </div>
-
-                        </div>
-                      </div>
-                    </div> <!-- End of Row -->   
-
-                    <!-- Row --> 
-                    <div class="row">
-                      <div class="col-lg-7">
-                        <div class="actions" id="actions">
-
-                            <div class="col-auto">
-                              <a class="btn btn-action" href="?" role="button" tabindex="0" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-custom-class="custom-popover" data-bs-trigger="hover focus" data-bs-title="حساب جديد" data-bs-content="قم بإنشاء حساب جديد تحت أحد المعايير المحاسبية المعدلة الى نظام الاستحقاق">
-                                <img src="img/png/icon01.png" width="15" height="15" />
-                                <span>حساب جديد</span>
-                             </a>
-                            </div>
-                            <div class="col-auto">
-                              <a class="btn btn-action" href="?" role="button" tabindex="0" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-custom-class="custom-popover" data-bs-trigger="hover focus" data-bs-title="قيد محاسبي جديد" data-bs-content="قم بإنشاء قيد محاسبي جديد تحت أحد المعايير المحاسبية المعدلة الى نظام الاستحقاق">
-                                <img src="img/png/icon02.png" width="15" height="15" />
-                                <span>قيد محاسبي جديد</span>
-                              </a>
-                            </div>
-                            <div class="col-auto">
-                              <a class="btn btn-action" href="?" role="button" tabindex="0" data-bs-toggle="popover" data-bs-placement="left" data-bs-custom-class="custom-popover" data-bs-trigger="hover focus" data-bs-title="رفع ملف / صورة" data-bs-content="قم برفع صورة أو ملف لفاتورة أو وثيقة وسوف يقوم نظام تكامل باستخراج وتسجيل القيود المحاسبية آليا وفق معايير النظام المحاسبي للاستحقاق">
-                                <img src="img/png/icon03.png" width="15" height="15" />
-                                <span>رفع ملف / صورة </span>
-                              </a>
-                            </div>
-
-                        </div>
-                      </div>
-                    </div> <!-- End of Row -->                      
-
                   </div> <!-- End of Main Container -->
                 </div> <!-- End of Main -->
               </div> <!-- End of Left Column -->
@@ -880,13 +595,6 @@
         }
         document.getElementById('criteria0').classList.add('bg-blue', 'active');
         document.getElementById('accordion-body').innerHTML = ``;
-        var filterCapsuleDivHtml = `
-          <div class="alert fade show filter-capsule" role="alert">
-              <strong>جميع الحسابات</strong>
-          </div>
-        `;
-        document.getElementById('account-filter-capsules').innerHTML=filterCapsuleDivHtml;
-        filterTable('','');
 
         // Get the query parameters from the current URL
         const urlParams = new URLSearchParams(window.location.search);
@@ -900,10 +608,10 @@
         if (title != null)
           document.title = `${title}`;
 
-        var criteriaText = "";
         if (criteria != null && parseInt(criteria, 10) >= 1 && parseInt(criteria, 10) <= 4) {
 
-          criteriaText = "تكاليف الاقتراض";
+          var criteriaText = "تكاليف الاقتراض";
+          document.getElementById('accordion-body').innerHTML = 
           document.getElementById('accordion-body').innerHTML = `
 
             <strong>الهدف</strong>
@@ -1017,15 +725,6 @@
           document.getElementById('criteria-desc').style.display = 'block';
           document.getElementById('criteria0').classList.remove('bg-blue', 'active');
           document.getElementById("criteria"+criteria).classList.add('bg-blue', 'active');
-
-          var filterCapsuleHtml = `
-          <div class="alert alert-dismissible fade show filter-capsule" role="alert">
-              <button id="criteria-filter" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              <strong>${criteriaText}</strong>
-          </div>`;
-          document.getElementById('account-filter-capsules').insertAdjacentHTML('beforeend', filterCapsuleHtml);
-          filterTable(criteriaText,'');
-
         }
         //document.getElementById('output').innerHTML = `الاسم: ${name}, العمر: ${age}`;
 
@@ -1035,70 +734,6 @@
                 accordion.classList.toggle('active');
             });
         });
-
-        document.querySelectorAll('.filter-capsule button').forEach(button => {
-            button.addEventListener('click', function(event) {
-                const paramKey = event.target.id.split('-')[0];
-                const newUrlParams = new URLSearchParams();
-                urlParams.forEach((value, key) => {
-                    if (key !== paramKey) {
-                        newUrlParams.append(key, value);
-                    }
-                });
-                const baseUrl = window.location.origin + window.location.pathname;
-                const newUrl = newUrlParams.toString() ? `${baseUrl}?${newUrlParams.toString()}` : baseUrl;
-                //console.log(newUrl);
-                window.location.href = newUrl;
-            });
-        });
-
-        document.getElementById('account-filter-input').addEventListener('keyup', function() {
-            var input = this.value.toLowerCase();
-            filterTable(criteriaText,input);
-        });
-
-        function filterTable(criteria,keyword) {
-
-            var table = document.getElementById('accounts-table');
-            var rows = table.getElementsByTagName('tr');
-            var visibleRowCount = 0;
-            
-            for (var i = 1; i < rows.length; i++) {  // Start from 1 to skip the header row
-                var cells = rows[i].getElementsByTagName('td');
-                var rowContainsCriteria = false;
-                var rowContainsKeyword = false;
-
-                // Check if the row matches the criteria from the search input
-                for (var j = 0; j < cells.length; j++) {
-                    if (cells[j].innerText.toLowerCase().indexOf(criteria) > -1) {
-                        rowContainsCriteria = true;
-                        break;
-                    }
-                }
-
-                // Check if the row matches the keyword from the search input
-                for (var j = 0; j < cells.length; j++) {
-                    if (cells[j].innerText.toLowerCase().indexOf(keyword) > -1) {
-                        rowContainsKeyword = true;
-                        break;
-                    }
-                }
-
-                // Show row only if it matches both the query parameter and the search keyword
-                if (rowContainsCriteria && rowContainsKeyword) {
-                    rows[i].style.display = '';
-                    visibleRowCount++;
-                } else {
-                    rows[i].style.display = 'none';
-                }
-            }
-
-            var minimumRowCount = 1;
-            if (visibleRowCount==0) 
-              minimumRowCount = 0;
-            document.getElementById('page-info').innerText = `${minimumRowCount}-${visibleRowCount} of ${visibleRowCount}`;
-
-        }
 
         const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
         const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
