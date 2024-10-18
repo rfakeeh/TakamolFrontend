@@ -802,21 +802,22 @@
                     <!-- Row --> 
                     <div class="row">
                       <div class="col-lg-7">
-                        <div class="actions" id="go-to-account">
+                        <div class="actions" id="go-to-account" style="align-items: baseline;">
 
                             <div class="col-auto">
                               <img src="img/png/icon04.png" width="24" height="24" />
                             </div>
                             <div class="col-auto">
-                              <span>رقم الحساب</span>
+                              <span>اسم الحساب</span>
                             </div>
                             <div class="col">
-                              <input id="account-number-input" type="text" class="form-control" placeholder="001">
+                              <input id="account-number-input" type="text" class="form-control" placeholder="بنك الانماء" value="بنك الانماء">
+                              <p id="error" style="display: none; color: red;">اسم الحساب غير موجود!</p>
                             </div>
                             <div class="col-auto">
-                              <a class="btn btn-action bg-blue active" href="?" role="button" tabindex="0" data-bs-toggle="popover" data-bs-placement="left" data-bs-custom-class="custom-popover" data-bs-trigger="hover" data-bs-title="الذهاب الى الحساب" data-bs-content="استعرض معلومات الحساب وقائمة القيود المحاسبية المسجلة فيه">
+                              <button id="goto-account-details-btn" class="btn btn-action bg-blue active" tabindex="0" data-bs-toggle="popover" data-bs-placement="left" data-bs-custom-class="custom-popover" data-bs-trigger="hover" data-bs-title="الذهاب الى الحساب" data-bs-content="استعرض معلومات الحساب وقائمة القيود المحاسبية المسجلة فيه">
                                 <span>الذهاب الى الحساب</span>
-                              </a>
+                              </button>
                             </div>
 
                         </div>
@@ -1422,7 +1423,38 @@
           document.getElementById('upload-file-name').value = "";
           document.querySelector('.modal-body .left').style.backgroundImage = "none";
           document.getElementById('upload-file-button').style.opacity = 100;
-        }       
+        } 
+
+        document.getElementById('goto-account-details-btn').addEventListener('click', function (event) {
+          
+          var account = document.getElementById('account-number-input').value.trim();
+          var found = false;
+          console.log(criteria);
+          console.log(account);
+          var table = document.getElementById("accounts-table");
+          var rows = table.getElementsByTagName("tr");
+          // Loop through each row in the table body (starting from row 1 since row 0 is the header)
+          for (var i = 1; i < rows.length; i++) {
+              var cells = rows[i].getElementsByTagName("td");
+              var name = cells[2].textContent; // The second column contains the account name
+              if (name === account) {
+                  found = true; // Return the account name from the third column
+              }
+          }
+          console.log(found);
+          var nextPageUrl = "viewAccount.html?account='"+account+"'";
+          if (!found) {
+            document.getElementById("error").style.display = "";
+          } else {
+            document.getElementById("error").style.display = "none";
+            if (criteria != null)
+              nextPageUrl += "&criteria="+criteria;
+            console.log(nextPageUrl);
+            window.location.href = nextPageUrl;
+          }
+
+
+        });      
     
     </script>
 
