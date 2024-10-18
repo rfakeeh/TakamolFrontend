@@ -1125,7 +1125,7 @@
 
         document.title = `نظام تكامل - جميع الحسابات`;
         document.getElementById('header-title').innerHTML = `جميع الحسابات`;
-        document.getElementById('breadcrumb-item1').innerHTML = `كل المعايير`;
+        document.getElementById('breadcrumb-item1').innerHTML = `جميع الحسابات`;
         document.getElementById('criteria-desc').style.display = 'none';
         for (let i = 0; i <= 4; i++) {
             document.getElementById(`criteria${i}`).classList.remove('bg-blue', 'active');
@@ -1264,9 +1264,9 @@
           `;
           }
 
-          document.title = `نظام تكامل - معيار ${criteriaText}`;
-          document.getElementById('header-title').innerHTML = `معيار ${criteriaText}`;
-          document.getElementById('breadcrumb-item1').innerHTML = `معيار ${criteriaText}`;
+          document.title = `نظام تكامل - حسابات ${criteriaText}`;
+          document.getElementById('header-title').innerHTML = `حسابات ${criteriaText}`;
+          document.getElementById('breadcrumb-item1').innerHTML = `حسابات ${criteriaText}`;
           document.getElementById('criteria-desc').style.display = 'block';
           document.getElementById('criteria0').classList.remove('bg-blue', 'active');
           document.getElementById("criteria"+criteria).classList.add('bg-blue', 'active');
