@@ -1723,6 +1723,10 @@
           const currency = document.getElementById('currency_hidden').value;
           const general_entry_from_desc1 = document.getElementById('general_entry_from_desc1_hidden').value;
           const general_entry_from_amount1 = document.getElementById('general_entry_from_amount1_hidden').value;
+          const general_entry_from_desc2 = document.getElementById('general_entry_from_desc2_hidden').value;
+          const general_entry_from_amount2 = document.getElementById('general_entry_from_amount2_hidden').value;
+          const general_entry_from_desc3 = document.getElementById('general_entry_from_desc3_hidden').value;
+          const general_entry_from_amount3 = document.getElementById('general_entry_from_amount3_hidden').value;
           const general_entry_to_desc1 = document.getElementById('general_entry_to_desc1_hidden').value;
           const general_entry_to_amount1 = document.getElementById('general_entry_to_amount1_hidden').value;
 
@@ -1738,6 +1742,14 @@
                   from_1: {
                       description: general_entry_from_desc1,
                       amount: general_entry_from_amount1
+                  },
+                  from_2: {
+                      description: general_entry_from_desc2,
+                      amount: general_entry_from_amount2
+                  },
+                  from_3: {
+                      description: general_entry_from_desc3,
+                      amount: general_entry_from_amount3
                   },
                   to_1: {
                       description: general_entry_to_desc1,
@@ -1761,6 +1773,10 @@
           params.append('general_entry[date]', general_entry_data.general_entry.date);
           params.append('general_entry[from1][description]', general_entry_data.general_entry.from_1.description);
           params.append('general_entry[from1][amount]', general_entry_data.general_entry.from_1.amount);
+          params.append('general_entry[from2][description]', general_entry_data.general_entry.from_2.description);
+          params.append('general_entry[from2][amount]', general_entry_data.general_entry.from_2.amount);
+          params.append('general_entry[from3][description]', general_entry_data.general_entry.from_3.description);
+          params.append('general_entry[from3][amount]', general_entry_data.general_entry.from_3.amount);
           params.append('general_entry[to1][description]', general_entry_data.general_entry.to_1.description);
           params.append('general_entry[to1][amount]', general_entry_data.general_entry.to_1.amount);
 

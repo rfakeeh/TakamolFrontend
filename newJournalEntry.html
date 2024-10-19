@@ -1084,6 +1084,12 @@
                                   <td><input class="form-control" type="text" id="general_entry_debit3" value="5000" /></td>
                                   <td class="transparent" style="width: 25px !important; cursor:pointer" onclick="removeRow('general_entry3')"><img src="img/png/icon18.png" height="20" /></td>
                                 </tr>
+                                <tr class="general_entry_info" id="general_entry4"> 
+                                  <td colspan="3"><input class="form-control" type="text" id="general_entry_desc4" value="الدائنون" /></td>
+                                  <td><input class="form-control" type="text" id="general_entry_credit4" value="0" /></td>
+                                  <td><input class="form-control" type="text" id="general_entry_debit4" value="5000" /></td>
+                                  <td class="transparent" style="width: 25px !important; cursor:pointer" onclick="removeRow('general_entry4')"><img src="img/png/icon18.png" height="20" /></td>
+                                </tr>
 
                                 <tr> 
                                   <td class="transparent"> 
@@ -1093,23 +1099,9 @@
                                       </button>
                                   </td>
                                   <td class="transparent"></td>
-                                  <td><span>المجموع بدون ضريبة</span></td>
-                                  <td><span>10000</span></td>
-                                  <td><span>10000</span></td>
-                                  <td class="transparent"></td>
-                                </tr>
-                                <tr> 
-                                  <td class="transparent" colspan="2"></td>
-                                  <td><span>القيمة المضافة 15%</span></td>
-                                  <td><span>1500</span></td>
-                                  <td><span>1500</span></td>
-                                  <td class="transparent"></td>
-                                </tr>
-                                <tr> 
-                                  <td class="transparent" colspan="2"></td>
                                   <td><span>الاجمالي</span></td>
-                                  <td><span>11500</span></td>
-                                  <td><span>11500</span></td>
+                                  <td><span id="total_credit">11500</span></td>
+                                  <td><span id="total_debit">11500</span></td>
                                   <td class="transparent"></td>
                                 </tr>
                               </tbody>
@@ -1441,6 +1433,14 @@
                     description: urlParams.get('general_entry[from1][description]'),
                     amount: urlParams.get('general_entry[from1][amount]')
                 },
+                from_2: {
+                    description: urlParams.get('general_entry[from2][description]'),
+                    amount: urlParams.get('general_entry[from2][amount]')
+                },
+                from_3: {
+                    description: urlParams.get('general_entry[from3][description]'),
+                    amount: urlParams.get('general_entry[from3][amount]')
+                },
                 to_1: {
                     description: urlParams.get('general_entry[to1][description]'),
                     amount: urlParams.get('general_entry[to1][amount]')
@@ -1637,7 +1637,69 @@
         
         if (account != null && account.trim() != "") {
           accountText = account.replace("'","");
+        }
 
+        /**
+        const general_entry_data = {
+            account_number: urlParams.get('account_number'),
+            account_name: urlParams.get('account_name'),
+            criteria_text: urlParams.get('criteria_text'),
+            currency: urlParams.get('currency'),
+            general_entry: {
+                number: urlParams.get('general_entry[number]'),
+                date: urlParams.get('general_entry[date]'),
+                from_1: {
+                    description: urlParams.get('general_entry[from1][description]'),
+                    amount: urlParams.get('general_entry[from1][amount]')
+                },
+                from_2: {
+                    description: urlParams.get('general_entry[from2][description]'),
+                    amount: urlParams.get('general_entry[from2][amount]')
+                },
+                from_3: {
+                    description: urlParams.get('general_entry[from3][description]'),
+                    amount: urlParams.get('general_entry[from3][amount]')
+                },
+                to_1: {
+                    description: urlParams.get('general_entry[to1][description]'),
+                    amount: urlParams.get('general_entry[to1][amount]')
+                }
+            }
+        };
+        **/
+
+        if (general_entry_data.account_number != null) {
+
+          document.getElementById('account-number-input').value = general_entry_data.account_number;
+          document.getElementById('account-name-input').value = general_entry_data.account_name;
+          document.getElementById('criteria-text-input').value = general_entry_data.criteria_text;
+          document.getElementById('general-number-input').value = general_entry_data.general_entry.number;
+          document.getElementById('date-input').value = general_entry_data.general_entry.date;
+
+          if (general_entry_data.account_name.includes("باص")) {
+            document.querySelector('#files img').src = "img/png/bus.png";
+          } else {
+            document.querySelector('#files img').src = "img/png/water.png";
+          }
+                  
+          document.getElementById('general_entry_desc1').value = general_entry_data.general_entry.from_1.description;
+          document.getElementById('general_entry_credit1').value = general_entry_data.general_entry.from_1.amount;
+          document.getElementById('general_entry_debit1').value = 0; 
+
+          document.getElementById('general_entry_desc2').value = general_entry_data.general_entry.from_2.description;
+          document.getElementById('general_entry_credit2').value = general_entry_data.general_entry.from_2.amount;
+          document.getElementById('general_entry_debit2').value = 0;
+
+          document.getElementById('general_entry_desc3').value = general_entry_data.general_entry.from_3.description;
+          document.getElementById('general_entry_credit3').value = general_entry_data.general_entry.from_3.amount;
+          document.getElementById('general_entry_debit3').value = 0;
+
+          document.getElementById('general_entry_desc4').value = general_entry_data.general_entry.to_1.description;
+          document.getElementById('general_entry_credit4').value = 0;
+          document.getElementById('general_entry_debit4').value = general_entry_data.general_entry.to_1.amount;
+
+          document.getElementById('total_credit').innerHTML = general_entry_data.general_entry.to_1.amount;
+          document.getElementById('total_debit').innerHTML = general_entry_data.general_entry.to_1.amount;
         }
 
         /*
@@ -1735,7 +1797,6 @@
         });
 
         document.getElementById('start-analysis-button').addEventListener('click', function (event) {
-
 
             document.querySelectorAll('.analysis-result').forEach(function(element) {
                 element.style.display = 'none'; // Show each hidden element
