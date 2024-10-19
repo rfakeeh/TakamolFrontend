@@ -934,12 +934,6 @@
                 <!-- Right -->
                 <div class="col col-lg-6 right">
                   
-                  <div class="row">
-                    <div class="col">
-                        <input type="file" id="upload-file-input" name="" style="opacity: 0">  
-                    </div>
-                  </div>
-
                   <div class="row" style="align-items: center;">
                     <div class="col-auto">
                       <img src="img/png/icon30.png" width="15" height="15" />
@@ -1083,6 +1077,34 @@
                   </div>
 
                   <div class="row analysis-result" style="align-items: center;">
+                    <div class="col-auto">
+                      <span style="color: #03669D; font-weight:700">من</span>
+                    </div>
+                    <div class="col-auto" style="padding-left: 10px;">
+                      <span id="general_entry_from_desc2">مبنى المستودع</span>
+                      <input type="hidden" id="general_entry_from_desc2_hidden" value="مبنى المستودع">
+                    </div>
+                    <div class="col" style="padding-left: 10px;">
+                      <span id="general_entry_from_amount2">10000</span>
+                      <input type="hidden" id="general_entry_from_amount2_hidden" value="10000">
+                    </div>
+                  </div>
+
+                  <div class="row analysis-result" style="align-items: center;">
+                    <div class="col-auto">
+                      <span style="color: #03669D; font-weight:700">من</span>
+                    </div>
+                    <div class="col-auto" style="padding-left: 10px;">
+                      <span id="general_entry_from_desc3">مبنى المستودع</span>
+                      <input type="hidden" id="general_entry_from_desc3_hidden" value="مبنى المستودع">
+                    </div>
+                    <div class="col" style="padding-left: 10px;">
+                      <span id="general_entry_from_amount3">10000</span>
+                      <input type="hidden" id="general_entry_from_amount3_hidden" value="10000">
+                    </div>
+                  </div>
+
+                  <div class="row analysis-result" style="align-items: center;">
                     <div class="col"></div>
                     <div class="col-auto">
                       <span style="color: #03669D; font-weight:700">الى</span>
@@ -1127,6 +1149,8 @@
         </div>
       </div>
     </div>
+
+    <input type="file" id="upload-file-input" name="" style="opacity: 0">  
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
@@ -1404,6 +1428,71 @@
                     clearInterval(interval); // Stop the timer after 4 seconds
 
                     progressBar.innerText = "اكتمل التحليل بنجاح";
+                    /////
+
+                    var data = {};
+
+                    data = {
+                        account_number: "005",
+                        account_name: "باصات مرسيدس",
+                        criteria_text: "المخزون",
+                        currency: "ريال سعودي",
+                        general_entry: {
+                            number: "1234567",
+                            date: "05/07/2026",
+                            from_1: {
+                                description: "باص مرسيدس 2023",
+                                amount: "26,160,00"
+                            },
+                            from_2: {
+                                description: "باص مرسيدس 2022",
+                                amount: "180,000"
+                            },
+                            from_3: {
+                                description: "الضريبة",
+                                amount: "3,951,000"
+                            },
+                            to_1: {
+                                description: "حساب النقدية",
+                                amount: "30,291,000"
+                            }
+                        }
+                    };
+
+
+                    // Getting input field values
+                    document.getElementById('account_number_hidden').value = data.account_number;
+                    document.getElementById('account_name_hidden').value = data.account_name;
+                    document.getElementById('criteria_text_hidden').value = data.criteria_text;
+                    document.getElementById('general_entry_number_hidden').value = data.general_entry.number;
+                    document.getElementById('general_entry_date_hidden').value = data.general_entry.date;
+                    document.getElementById('currency_hidden').value = data.currency;
+                    document.getElementById('general_entry_from_desc1_hidden').value = data.general_entry.from_1.description;
+                    document.getElementById('general_entry_from_amount1_hidden').value = data.general_entry.from_1.amount;
+                    document.getElementById('general_entry_from_desc2_hidden').value = data.general_entry.from_2.description;
+                    document.getElementById('general_entry_from_amount2_hidden').value = data.general_entry.from_2.amount;
+                    document.getElementById('general_entry_from_desc3_hidden').value = data.general_entry.from_3.description;
+                    document.getElementById('general_entry_from_amount3_hidden').value = data.general_entry.from_3.amount;
+                    document.getElementById('general_entry_to_desc1_hidden').value = data.general_entry.to_1.description;
+                    document.getElementById('general_entry_to_amount1_hidden').value = data.general_entry.to_1.amount;
+
+                    document.getElementById('account_number').innerHTML = data.account_number;
+                    document.getElementById('account_name').innerHTML = data.account_name;
+                    document.getElementById('criteria_text').innerHTML = data.criteria_text;
+                    document.getElementById('general_entry_number').innerHTML = data.general_entry.number;
+                    document.getElementById('general_entry_date').innerHTML = data.general_entry.date;
+                    document.getElementById('currency').innerHTML = data.currency;
+                    document.getElementById('general_entry_from_desc1').innerHTML = data.general_entry.from_1.description;
+                    document.getElementById('general_entry_from_amount1').innerHTML = data.general_entry.from_1.amount;
+                    document.getElementById('general_entry_from_desc2').innerHTML = data.general_entry.from_2.description;
+                    document.getElementById('general_entry_from_amount2').innerHTML = data.general_entry.from_2.amount;
+                    document.getElementById('general_entry_from_desc3').innerHTML = data.general_entry.from_3.description;
+                    document.getElementById('general_entry_from_amount3').innerHTML = data.general_entry.from_3.amount;
+                    document.getElementById('general_entry_to_desc1').innerHTML = data.general_entry.to_1.description;
+                    document.getElementById('general_entry_to_amount1').innerHTML = data.general_entry.to_1.amount;
+
+
+                    /////
                     // Show all hidden elements with class "analysis-result"
                     document.querySelectorAll('.analysis-result').forEach(function(element) {
                         element.style.display = ''; // Show each hidden element
@@ -1531,7 +1620,9 @@
           var nextPageUrl = "newJournalEntry.html?"+queryString;
           window.location.href = nextPageUrl;
 
-        });        
+        });
+
+    
      
     
     </script>
