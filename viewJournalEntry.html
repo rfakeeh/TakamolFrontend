@@ -216,7 +216,8 @@
         display: flex;
       }
 
-      .main .employee, .main .company, .main .account, .main .actions {
+      .main .employee, .main .company, .main .account, .main .actions,
+      .main .files {
         padding: 10px;
         margin-bottom: 20px;
         border: 1px solid #D0D5DD;
@@ -230,9 +231,22 @@
         justify-content: space-between;
       }
 
-      .main .employee#employee-role {
+      .main .employee#employee-role, .main .files {
         width: auto;
         justify-content: flex-start;
+      }
+
+      .main .files {
+        min-height: 200px !important;
+        background-color: #FFFFFF;
+        border: none !important;
+      }
+
+      .main .files img {
+        border: 1px solid #D0D5DD;
+        box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05), 0px 0px 0px 4px #F2F4F7 !important;
+        height: 150px;
+        margin: 10px;
       }
 
       .main .criteria, .main .accounts, .main .actions {
@@ -242,6 +256,11 @@
       .main .actions {
         border: none !important;
         width: 100% !important;
+      }
+
+      .main .actions input {
+        background-color: transparent !important;
+        border: none !important;
       }
 
       .main span {
@@ -363,9 +382,6 @@
           opacity: 1;
       }
 
-      #account-number-input {
-        border: 1px solid #D0D5DD !important;
-      }
 
       #account-number-input:focus, #account-number-input:active {
         box-shadow: none !important;
@@ -401,11 +417,14 @@
         border: 1px solid #D0D5DD !important;
         table-layout: auto;
         width: 100%;
+        border-collapse: collapse !important;
+        border: none !important;
       }
 
       th, td {
         background-color: #F9FAFB !important;
         white-space: nowrap;
+        width: 16% !important;
       }
 
       th span, td span{
@@ -439,6 +458,21 @@
 
       .stretch {
         width: 100%; 
+      }
+
+      .general_entry_info td {
+        background-color: #FFFFFF !important;
+      }
+
+      .general_entry_info input {
+        background-color: transparent; !important;
+        border: none !important;
+        width: 90% !important;
+      }
+
+      .transparent {
+        background-color: #FFFFFF !important;
+        border: none !important;
       }
 
       /****************** Pagination *****************/
@@ -741,42 +775,12 @@
                       </div>
                     </div> <!-- End of Row --> 
 
-                    <!-- Row --> 
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <div class="account" id="account-name">
-                          <span class="label">اسم الحساب</span>
-                          <span class="value">xxxx</span>
-                          <img src="img/png/icon05.png" height="24" width="24" style="cursor: pointer;" />
-                        </div>
-                      </div>
-                    </div> <!-- End of Row --> 
 
-                    <!-- Row --> 
-                    <div class="row">
-                      <div class="col-lg-7">
-                        
-                        <div id="account-filter-capsules">
-                          <div class="alert fade show filter-capsule" role="alert">
-                            <strong>جميع الحسابات</strong>
-                          </div>
-                        </div>
-
-                      </div>
-                      <div class="col-lg-5 left">
-                        <div class="account" id="account-filter">
-                          <div class="input-group">
-                          <input type="text" class="form-control" id="account-filter-input" placeholder="ادخل نصا لفلترة القيود المحاسبية">                          </div>
-                          <img src="img/png/icon25.png" height="24" width="24" style="cursor: pointer;" />
-                        </div>
-                      </div>
-                    </div> <!-- End of Row -->  
-
-                    <!-- Row --> 
+                    <!-- Row -->
+                    <!-- move it to related entries 
                     <div class="row">
                       <div class="col-lg-12">
                         <div class="accounts" id="accounts">
-
 
                             <table id="accounts-table" class="table table-bordered">
                               <thead>
@@ -883,52 +887,228 @@
 
                         </div>
                       </div>
-                    </div> <!-- End of Row -->  
+                    </div> --> <!-- End of Row -->  
 
-                    <!-- Row --> 
+                    <!-- Row -->
+                    <!-- move it to related entries  
                     <div class="row">
                       <div class="col-lg-12">
                         <div class="accounts" id="accounts-pagination">
       
                           <div class="pagination-container">
-                              <!-- Pagination -->
                               <ul class="pagination">
                                   <li><a href="#" class="disabled"><img src="img/png/icon27.png" alt="Previous Arrow"> Previous</a></li>
                                   <li><a href="#" class="disabled">1</a></li>
                                   <li><a href="#" class="disabled">Next <img src="img/png/icon28.png" alt="Previous Arrow"></a></li>
                               </ul>
-                              <!-- Display of items per page -->
                               <div class="page-info" id="page-info"></div>
                           </div>
 
                         </div>
                       </div>
-                    </div> <!-- End of Row -->   
+                    </div>--> <!-- End of Row -->   
 
                     <!-- Row --> 
                     <div class="row">
-                      <div class="col-lg-7">
+                      <div class="col-lg-6">
                         <div class="actions" id="go-to-account" style="align-items: baseline;">
-
                             <div class="col-auto">
-                              <img src="img/png/icon09.png" width="24" height="24" />
+                              <img src="img/png/icon04.png" width="24" />
                             </div>
+                            <div class="col-lg-3">
+                              <span>رقم الحساب</span>
+                            </div>
+                            <div class="col">
+                              <input id="account-number-input" type="text" class="form-control" placeholder="004" value="004">
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="actions" id="go-to-account" style="align-items: baseline;">
                             <div class="col-auto">
+                              <img src="img/png/icon30.png" width="24" />
+                            </div>
+                            <div class="col-lg-3">
+                              <span>اسم الحساب</span>
+                            </div>
+                            <div class="col">
+                              <input id="account-name-input" type="text" class="form-control" placeholder="شركة الصدف للمرطبات" value="شركة الصدف للمرطبات">
+                            </div>
+                        </div>
+                      </div>
+                    </div> <!-- End of Row -->
+
+
+                    <!-- Row --> 
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="actions" id="go-to-account" style="align-items: baseline;">
+                            <div class="col-auto">
+                              <img src="img/png/icon26.png" width="24" />
+                            </div>
+                            <div class="col-lg-3">
+                              <span>المعيار</span>
+                            </div>
+                            <div class="col">
+                              <input id="criteria-text-input" type="text" class="form-control" placeholder="الايرادات" value="الايرادات">
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="actions" id="go-to-account" style="align-items: baseline;">
+                            <div class="col-auto">
+                              <img src="img/png/icon09.png" width="24" />
+                            </div>
+                            <div class="col-lg-3">
                               <span>القيد العام GE</span>
                             </div>
                             <div class="col">
-                              <input id="account-number-input" type="text" class="form-control" placeholder="000001" value="000001">
-                              <p id="error" style="display: none; color: red;">رقم القيد غير موجود!</p>
+                              <input id="general-number-input" type="text" class="form-control" placeholder="000004" value="000004">
+                            </div>
+                        </div>
+                      </div>
+                    </div> <!-- End of Row -->
+
+
+                    <!-- Row --> 
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="actions" id="go-to-account" style="align-items: baseline;">
+                            <div class="col-auto">
+                              <img src="img/png/icon13.png" width="24" height="24" />
+                            </div>
+                            <div class="col-lg-3">
+                              <span>تاريخ العملية</span>
+                            </div>
+                            <div class="col">
+                              <input id="date-input" type="text" class="form-control" placeholder="10/11/2023" value="10/11/2023">
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="actions" id="go-to-account" style="align-items: baseline;">
+                            <div class="col-auto">
+                              <img src="img/png/icon11.png" width="24" height="24" />
+                            </div>
+                            <div class="col-lg-3">
+                              <span>العملة</span>
+                            </div>
+                            <div class="col">
+                              <input id="currency-input" type="text" class="form-control" placeholder="ريال سعودي" value="ريال سعودي">
+                            </div>
+                        </div>
+                      </div>
+                    </div> <!-- End of Row -->
+
+                    <!-- Row --> 
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="actions" id="go-to-account" style="align-items: baseline; justify-content: flex-start;">
+                            <div class="col-auto">
+                              <img src="img/png/icon22.png" width="24" height="24" />
+                            </div>
+                            <div class="col-lg-3">
+                              <span>المرفقات</span>
+                            </div>
+                        </div>
+                      </div>
+                    </div> <!-- End of Row -->
+
+                    <!-- Row --> 
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="files" id="files">
+                          <img src="img/png/sadaf.png" />
+                        </div>
+                      </div>
+                    </div> <!-- End of Row --> 
+
+                    <!-- Row --> 
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="actions" id="go-to-account" style="align-items: baseline; justify-content: flex-start;">
+                            <div class="col-auto">
+                              <img src="img/png/icon31.png" width="24" height="24" />
                             </div>
                             <div class="col-auto">
-                              <button id="goto-account-details-btn" class="btn btn-action bg-blue active" tabindex="0" data-bs-toggle="popover" data-bs-placement="left" data-bs-custom-class="custom-popover" data-bs-trigger="hover" data-bs-title="الذهاب الى القيد" data-bs-content="استعرض تفاصيل القيد المحاسبي وقم بمراجعته وتحديثه وتصديره الى دفتر الاستاذ">
-                                <span>الذهاب الى القيد</span>
-                              </button>
+                              <span>القيود المحاسبية</span>
                             </div>
+                        </div>
+                      </div>
+                    </div> <!-- End of Row -->
+
+                    <!-- Row --> 
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="accounts" id="accounts">
+
+                          <table id="accounts-table" class="table">
+                              <thead>
+                                <tr>
+                                  <th scope="col" colspan="3">
+                                    <img src="img/png/icon09.png" height="20" width="20" />
+                                    <span>وصف حساب القيد</span>
+                                  </th>
+                                  <th scope="col">
+                                    <img src="img/png/icon30.png" height="20" width="20" />
+                                    <span>مدين</span>
+                                  </th>
+                                  <th scope="col">
+                                    <img src="img/png/icon31.png" height="20" width="20" />
+                                    <span>دائن</span>
+                                  </th>
+                                  <th scope="col" class="transparent" style="width:25px !important">
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr class="general_entry_info" id="general_entry1"> 
+                                  <td colspan="3"><input class="form-control" type="text" id="general_entry_desc1" value="النقدية" /></td>
+                                  <td><input class="form-control" type="text" id="general_entry_credit1" value="10000" /></td>
+                                  <td><input class="form-control" type="text" id="general_entry_debit1" value="0" /></td>
+                                  <td class="transparent" style="width: 25px !important;"></td>
+                                </tr>
+                                <tr class="general_entry_info" id="general_entry2"> 
+                                  <td colspan="3"><input class="form-control" type="text" id="general_entry_desc2" value="المصروفات" /></td>
+                                  <td><input class="form-control" type="text" id="general_entry_credit2" value="0" /></td>
+                                  <td><input class="form-control" type="text" id="general_entry_debit2" value="5000" /></td>
+                                  <td class="transparent" style="width: 25px !important;"></td>
+                                </tr>
+                                <tr class="general_entry_info" id="general_entry3"> 
+                                  <td colspan="3"><input class="form-control" type="text" id="general_entry_desc3" value="الدائنون" /></td>
+                                  <td><input class="form-control" type="text" id="general_entry_credit3" value="0" /></td>
+                                  <td><input class="form-control" type="text" id="general_entry_debit3" value="5000" /></td>
+                                  <td class="transparent" style="width: 25px !important;"></td>
+                                </tr>
+
+                                <tr> 
+                                  <td class="transparent"></td>
+                                  <td class="transparent"></td>
+                                  <td><span>المجموع بدون ضريبة</span></td>
+                                  <td><span>10000</span></td>
+                                  <td><span>10000</span></td>
+                                  <td class="transparent"></td>
+                                </tr>
+                                <tr> 
+                                  <td class="transparent" colspan="2"></td>
+                                  <td><span>القيمة المضافة 15%</span></td>
+                                  <td><span>1500</span></td>
+                                  <td><span>1500</span></td>
+                                  <td class="transparent"></td>
+                                </tr>
+                                <tr> 
+                                  <td class="transparent" colspan="2"></td>
+                                  <td><span>الاجمالي</span></td>
+                                  <td><span>11500</span></td>
+                                  <td><span>11500</span></td>
+                                  <td class="transparent"></td>
+                                </tr>
+                              </tbody>
+                            </table>
 
                         </div>
                       </div>
-                    </div> <!-- End of Row -->   
+                    </div> <!-- End of Row --> 
 
                     <!-- Row --> 
                     <div class="row">
@@ -936,23 +1116,13 @@
                         <div class="actions" id="actions">
 
                             <div class="col-auto">
-                              <button class="btn btn-action" tabindex="0" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-custom-class="custom-popover" data-bs-trigger="hover" data-bs-title="حساب جديد" data-bs-content="قم بإنشاء حساب جديد تحت أحد المعايير المحاسبية المعدلة الى نظام الاستحقاق">
-                                <img src="img/png/icon01.png" width="15" height="15" />
-                                <span>حساب جديد</span>
+                              <button class="btn btn-action" tabindex="0" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-custom-class="custom-popover" data-bs-trigger="hover" data-bs-title="تصدير القيد الحالي" data-bs-content="قم بتصدير القيد الحالي الى دفتر الاستاذ">
+                                <img src="img/png/icon14.png" width="15" height="15" />
+                                <span>تصدير القيد الحالي</span>
                               </button>
                             </div>
-                            <div class="col-auto">
-                              <button id="create-journal-entry-btn" class="btn btn-action" tabindex="0" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-custom-class="custom-popover" data-bs-trigger="hover" data-bs-title="قيد محاسبي جديد" data-bs-content="قم بإنشاء قيد محاسبي جديد تحت أحد المعايير المحاسبية المعدلة الى نظام الاستحقاق">
-                                <img src="img/png/icon01.png" width="15" height="15" />
-                                <span>قيد محاسبي جديد</span>
-                              </button>
-                            </div>
-                            <div class="col-auto">
-                              <button class="btn btn-action" id="btn-action-upload" tabindex="0" data-bs-toggle="popover" data-bs-placement="left" data-bs-custom-class="custom-popover" data-bs-trigger="hover" data-bs-title="رفع ملف / صورة" data-bs-content="قم برفع صورة أو ملف لفاتورة أو وثيقة وسوف يقوم نظام تكامل باستخراج وتسجيل القيود المحاسبية آليا وفق معايير النظام المحاسبي للاستحقاق">
-                                <img src="img/png/icon03.png" width="15" height="15" />
-                                <span>رفع ملف / صورة </span>
-                              </button>
-                            </div>
+                            <div class="col-auto"></div>
+                            <div class="col-auto"></div>
 
                         </div>
                       </div>
@@ -1023,6 +1193,7 @@
       </div> <!-- End of Row -->
     </div>
 
+
     <!-- Modal -->
     <div class="modal fade" id="upload-file-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="upload-file-modal-label" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
@@ -1087,8 +1258,7 @@
                       <span style="color: #03669D; font-weight:700">رقم الحساب</span>
                     </div>
                     <div class="col" style="padding-left: 10px;">
-                      <span id="account_number" class="analysis-result">001</span>
-                      <input type="hidden" id="account_number_hidden" value="001">
+                      <span class="analysis-result">001</span>
                     </div>
                     <div class="col"></div>
                   </div>
@@ -1101,8 +1271,7 @@
                       <span style="color: #03669D; font-weight:700">اسم الحساب</span>
                     </div>
                     <div class="col" style="padding-left: 10px;">
-                      <span id="account_name" class="analysis-result">بنك الانماء</span>
-                      <input type="hidden" id="account_name_hidden" value="بنك الانماء">
+                      <span class="analysis-result">بنك الانماء</span>
                     </div>
                     <div class="col"></div>
                   </div>
@@ -1115,8 +1284,7 @@
                       <span style="color: #03669D; font-weight:700">المعيار</span>
                     </div>
                     <div class="col" style="padding-left: 10px;">
-                      <span id="criteria_text" class="analysis-result">تكاليف الاقتراض</span>
-                      <input type="hidden" id="criteria_text_hidden" value="تكاليف الاقتراض">
+                      <span class="analysis-result">تكاليف الاقتراض</span>
                     </div>
                     <div class="col"></div>
                   </div>
@@ -1129,8 +1297,7 @@
                       <span style="color: #03669D; font-weight:700">القيد العام GE</span>
                     </div>
                     <div class="col" style="padding-left: 10px;">
-                      <span id="general_entry_number" class="analysis-result">000003</span>
-                      <input type="hidden" id="general_entry_number_hidden" value="000003">
+                      <span class="analysis-result">000003</span>
                     </div>
                     <div class="col"></div>
                   </div>
@@ -1143,8 +1310,7 @@
                       <span style="color: #03669D; font-weight:700">تاريخ العملية</span>
                     </div>
                     <div class="col" style="padding-left: 10px;">
-                      <span id="general_entry_date" class="analysis-result">01/01/2024</span>
-                      <input type="hidden" id="general_entry_date_hidden" value="01/01/2024">
+                      <span class="analysis-result">01/01/2024</span>
                     </div>
                     <div class="col"></div>
                   </div>
@@ -1157,8 +1323,7 @@
                       <span style="color: #03669D; font-weight:700">العملة</span>
                     </div>
                     <div class="col" style="padding-left: 10px;">
-                      <span id="currency" class="analysis-result">ريال سعودي</span>
-                      <input type="hidden" id="currency_hidden" value="ريال سعودي">
+                      <span class="analysis-result">ريال سعودي</span>
                     </div>
                     <div class="col"></div>
                   </div>
@@ -1178,12 +1343,10 @@
                       <span style="color: #03669D; font-weight:700">من</span>
                     </div>
                     <div class="col-auto" style="padding-left: 10px;">
-                      <span id="general_entry_from_desc1">مبنى المستودع</span>
-                      <input type="hidden" id="general_entry_from_desc1_hidden" value="مبنى المستودع">
+                      <span>مبنى المستودع</span>
                     </div>
                     <div class="col" style="padding-left: 10px;">
-                      <span id="general_entry_from_amount1">10000</span>
-                      <input type="hidden" id="general_entry_from_amount1_hidden" value="10000">
+                      <span>10000</span>
                     </div>
                   </div>
 
@@ -1193,12 +1356,10 @@
                       <span style="color: #03669D; font-weight:700">الى</span>
                     </div>
                     <div class="col-auto" style="padding-left: 10px;">
-                      <span id="general_entry_to_desc1">النقدية</span>
-                      <input type="hidden" id="general_entry_to_desc1_hidden" value="النقدية">
+                      <span>النقدية</span>
                     </div>
                     <div class="col" style="padding-left: 10px;">
-                      <span id="general_entry_to_amount1">10000</span>
-                      <input type="hidden" id="general_entry_to_amount1_hidden" value="10000">
+                      <span>10000</span>
                     </div>
                   </div>
 
@@ -1233,7 +1394,6 @@
       </div>
     </div>
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 
@@ -1243,21 +1403,52 @@
         const urlParams = new URLSearchParams(window.location.search);
 
         const title = urlParams.get('title');
-        const criteria = urlParams.get('criteria');
-        const account = urlParams.get('account').replace("'","");
+        var criteria = urlParams.get('criteria');
+        const account = urlParams.get('account');
+        const entry = urlParams.get('entry').replace("'","");
         const age = urlParams.get('age');
 
-        document.title = `نظام تكامل - جميع القيود المحاسبية ل`+account;
-        document.getElementById('header-title').innerHTML = `جميع القيود المحاسبية ل`+account;
-        document.getElementById('breadcrumb-item1').innerHTML = `جميع القيود المحاسبية ل`+account;
+        /////////////////
+
+        // Filling the transaction object
+        const general_entry_data = {
+            account_number: urlParams.get('account_number'),
+            account_name: urlParams.get('account_name'),
+            criteria_text: urlParams.get('criteria_text'),
+            currency: urlParams.get('currency'),
+            general_entry: {
+                number: urlParams.get('general_entry[number]'),
+                date: urlParams.get('general_entry[date]'),
+                from_1: {
+                    description: urlParams.get('general_entry[from1][description]'),
+                    amount: urlParams.get('general_entry[from1][amount]')
+                },
+                to_1: {
+                    description: urlParams.get('general_entry[to1][description]'),
+                    amount: urlParams.get('general_entry[to1][amount]')
+                }
+            }
+        };
+
+        console.log(urlParams.get('general_entry'));
+        console.log(JSON.stringify(general_entry_data, null, 2));
+
+        ////////////////
+        
+        document.title = `نظام تكامل - قيد محاسبي رقم ${entry}`;
+        document.getElementById('header-title').innerHTML =  `قيد محاسبي رقم ${entry}`;
+        document.getElementById('breadcrumb-item1').innerHTML =  `قيد محاسبي رقم ${entry}`;
         document.getElementById('criteria-desc').style.display = 'none';
         for (let i = 0; i <= 4; i++) {
             document.getElementById(`criteria${i}`).classList.remove('bg-blue', 'active');
-            document.getElementById(`criteria${i}`).setAttribute('href', "?account="+account+"&criteria="+i);
+            //document.getElementById(`criteria${i}`).setAttribute('href', "?criteria="+i);
+            document.getElementById(`criteria${i}`).removeAttribute('href');
         }
         document.getElementById('criteria0').classList.add('bg-blue', 'active');
-        document.querySelector('#account-name .value').innerHTML = account;
+        //document.querySelector('#account-name .value').innerHTML = account;
+        /****** this is replaced by form input field *******/
         document.getElementById('accordion-body').innerHTML = ``;
+        /*
         var filterCapsuleDivHtml = `
           <div class="alert fade show filter-capsule" role="alert">
               <strong>كل المعايير</strong>
@@ -1268,6 +1459,8 @@
         `;
         document.getElementById('account-filter-capsules').innerHTML=filterCapsuleDivHtml;
         filterTable('','',account);
+        */
+        /****** update table and filtering in related entries modal/panel *******/
         resetModal();
 
 
@@ -1276,33 +1469,11 @@
           document.title = `${title}`;
 
         var criteriaText = "";
-        if (criteria != null && parseInt(criteria, 10) >= 1 && parseInt(criteria, 10) <= 4) {
+        if (general_entry_data.criteria_text != null || (criteria != null && parseInt(criteria, 10) >= 1 && parseInt(criteria, 10) <= 4)) {
 
-          criteriaText = "تكاليف الاقتراض";
-          document.getElementById('accordion-body').innerHTML = `
-
-            <strong>الهدف</strong>
-            <p>يحدد هذا المعيار المعالجة المحاسبية لتكاليف الاقتراض، سواء بالإثبات الفوري على أنها مصروفات أو اتاحة رسملة تكاليف الاقتراض التي تعود - بشكل مباشر - إلى اقتناء، أو إنشاء، أو إنتاج أصل مؤهل.</p>
-
-            <strong>النطاق</strong>
-            <ul>
-                <li>المحاسبة عن تكاليف الاقتراض</li>
-            </ul>
-
-            <strong>الإفصاح</strong>
-            <ul>
-                <li>السياسة المحاسبية المطبقة لتكاليف الاقتراض.</li>
-                <li>مبلغ تكاليف الاقتراض المرسملة خلال الفترة.</li>
-                <li>معدل الرسملة المستخدم لتحديد مبلغ تكاليف الاقتراض المؤهل للرسملة.</li>
-            </ul>
-
-            <strong>الخيار المعتمد</strong>
-            <p>إثبات تكاليف الاقتراض في الفترة التي يتم تكبدها فيها.</p>
-                                    
-          `;
-
-          if (parseInt(criteria, 10) == 2) {
+          if (general_entry_data.criteria_text == "الايرادات" || parseInt(criteria, 10) == 2) {
             criteriaText = "الايرادات";
+            criteria = 2;
             document.getElementById('accordion-body').innerHTML = `
 
               <strong>الهدف</strong>
@@ -1326,8 +1497,9 @@
           `;
 
           }
-          else if (parseInt(criteria, 10) == 3) {
+          else if (general_entry_data.criteria_text == "منافع الموظفين" || parseInt(criteria, 10) == 3) {
             criteriaText = "منافع الموظفين";
+            criteria = 3;
             document.getElementById('accordion-body').innerHTML = `
 
                 
@@ -1356,8 +1528,9 @@
                                   
           `;
           }
-          else if (parseInt(criteria, 10) == 4) {
+          else if (general_entry_data.criteria_text == "المخزون" || parseInt(criteria, 10) == 4) {
             criteriaText = "المخزون";
+            criteria = 4;
             document.getElementById('accordion-body').innerHTML = `
 
               <strong>الهدف</strong>
@@ -1384,15 +1557,41 @@
               <p>احتساب تكلفة المخزون المنصرف باستخدام طريقة متوسط التكلفة المرجح ويمكن استخدام طريقة الوارد أولاً صادر أولاً مع الإفصاح عن أسباب استخدامها.</p>
                                   
           `;
+          } else {
+
+            criteriaText = "تكاليف الاقتراض";
+            criteria = 1;
+            document.getElementById('accordion-body').innerHTML = `
+
+              <strong>الهدف</strong>
+              <p>يحدد هذا المعيار المعالجة المحاسبية لتكاليف الاقتراض، سواء بالإثبات الفوري على أنها مصروفات أو اتاحة رسملة تكاليف الاقتراض التي تعود - بشكل مباشر - إلى اقتناء، أو إنشاء، أو إنتاج أصل مؤهل.</p>
+
+              <strong>النطاق</strong>
+              <ul>
+                  <li>المحاسبة عن تكاليف الاقتراض</li>
+              </ul>
+
+              <strong>الإفصاح</strong>
+              <ul>
+                  <li>السياسة المحاسبية المطبقة لتكاليف الاقتراض.</li>
+                  <li>مبلغ تكاليف الاقتراض المرسملة خلال الفترة.</li>
+                  <li>معدل الرسملة المستخدم لتحديد مبلغ تكاليف الاقتراض المؤهل للرسملة.</li>
+              </ul>
+
+              <strong>الخيار المعتمد</strong>
+              <p>إثبات تكاليف الاقتراض في الفترة التي يتم تكبدها فيها.</p>
+                                      
+            `;
           }
 
-          document.title = `نظام تكامل - قيود ${criteriaText} ل${account}`;
-          document.getElementById('header-title').innerHTML = `قيود ${criteriaText} ل${account}`;
-          document.getElementById('breadcrumb-item1').innerHTML = `قيود ${criteriaText} ل${account}`;
+          document.title = `نظام تكامل - إنشاء قيد ${criteriaText} جديد`;
+          document.getElementById('header-title').innerHTML = `إنشاء قيد ${criteriaText} جديد`;
+          document.getElementById('breadcrumb-item1').innerHTML = `إنشاء قيد ${criteriaText} جديد`;
           document.getElementById('criteria-desc').style.display = 'block';
           document.getElementById('criteria0').classList.remove('bg-blue', 'active');
           document.getElementById("criteria"+criteria).classList.add('bg-blue', 'active');
 
+          /*
           var filterCapsuleHtml = `
           <div class="alert alert-dismissible fade show filter-capsule" role="alert">
               <button id="criteria-filter" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -1400,6 +1599,8 @@
           </div>`;
           document.getElementById('account-filter-capsules').insertAdjacentHTML('beforeend', filterCapsuleHtml);
           filterTable(criteriaText,'',account);
+          */
+          /****** update table and filtering in related entries modal/panel *******/
 
         }
         //document.getElementById('output').innerHTML = `الاسم: ${name}, العمر: ${age}`;
@@ -1411,6 +1612,18 @@
             });
         });
 
+        var accountText = "";
+        if (general_entry_data != null) {
+          accountText = general_entry_data.account_name;
+
+        }
+        
+        if (account != null && account.trim() != "") {
+          accountText = account.replace("'","");
+
+        }
+
+        /*
         document.querySelectorAll('.filter-capsule button').forEach(button => {
             button.addEventListener('click', function(event) {
                 const paramKey = event.target.id.split('-')[0];
@@ -1483,24 +1696,12 @@
             document.getElementById('page-info').innerText = `${minimumRowCount}-${visibleRowCount} of ${visibleRowCount}`;
 
         }
+        */
+        /****** update table and filtering in related entries modal/panel *******/
 
         const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
         const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
 
-        document.getElementById('btn-action-upload').addEventListener('click', function (event) {
-
-            var modal = new bootstrap.Modal(document.getElementById('upload-file-modal'));
-            modal.show();
-        });
-
-        document.getElementById('upload-file-input').addEventListener('change', function (event) {
-
-            var fileUrl = URL.createObjectURL(event.target.files[0]);
-            document.getElementById('upload-file-name').value = event.target.files[0].name;
-            document.querySelector('.modal-body .left').style.backgroundImage = 'url(' + fileUrl + ')';
-            document.getElementById('upload-file-button').style.opacity = 0;
-            document.getElementById('start-analysis-button').removeAttribute('disabled');
-        });
 
         document.getElementById('start-analysis-button').addEventListener('click', function (event) {
 
@@ -1554,107 +1755,12 @@
           document.getElementById('upload-file-name').value = "";
           document.querySelector('.modal-body .left').style.backgroundImage = "none";
           document.getElementById('upload-file-button').style.opacity = 100;
+        }
+
+        function removeRow(rowId) {
+          document.getElementById(rowId).style.display = "none";
         } 
-
-        document.getElementById('goto-account-details-btn').addEventListener('click', function (event) {
-          
-          var account = document.getElementById('account-number-input').value.trim();
-          var found = false;
-          console.log(criteria);
-          console.log(account);
-          var table = document.getElementById("accounts-table");
-          var rows = table.getElementsByTagName("tr");
-          // Loop through each row in the table body (starting from row 1 since row 0 is the header)
-          for (var i = 1; i < rows.length; i++) {
-              var cells = rows[i].getElementsByTagName("td");
-              var name = cells[3].textContent; // The second column contains the account name
-              if (name === account) {
-                  found = true; // Return the account name from the third column
-              }
-          }
-          console.log(found);
-          var nextPageUrl = "viewJournalEntry.html?entry="+account;
-          if (!found) {
-            document.getElementById("error").style.display = "";
-          } else {
-            document.getElementById("error").style.display = "none";
-            if (criteria != null)
-              nextPageUrl += "&criteria="+criteria;
-            console.log(nextPageUrl);
-            window.location.href = nextPageUrl;
-          }
-
-
-        }); 
-
-        document.getElementById('create-journal-entry-btn').addEventListener('click', function (event) {
-              var nextPageUrl = "newJournalEntry.html?account="+account;
-              if (criteria != null)
-                nextPageUrl += "&criteria="+criteria;
-              window.location.href = nextPageUrl;
-        });
-
-        document.getElementById('add-analysis-result').addEventListener('click', function (event) {
-
-          // Getting input field values
-          const account_number = document.getElementById('account_number_hidden').value;
-          const account_name = document.getElementById('account_name_hidden').value;
-          const criteria_text = document.getElementById('criteria_text_hidden').value;
-          const general_entry_number = document.getElementById('general_entry_number_hidden').value;
-          const general_entry_date = document.getElementById('general_entry_date_hidden').value;
-          const currency = document.getElementById('currency_hidden').value;
-          const general_entry_from_desc1 = document.getElementById('general_entry_from_desc1_hidden').value;
-          const general_entry_from_amount1 = document.getElementById('general_entry_from_amount1_hidden').value;
-          const general_entry_to_desc1 = document.getElementById('general_entry_to_desc1_hidden').value;
-          const general_entry_to_amount1 = document.getElementById('general_entry_to_amount1_hidden').value;
-
-          // Filling the transaction object
-          const general_entry_data = {
-              account_number: account_number,
-              account_name: account_name,
-              criteria_text: criteria_text,
-              currency: currency,
-              general_entry: {
-                  number: general_entry_number,
-                  date: general_entry_date,
-                  from_1: {
-                      description: general_entry_from_desc1,
-                      amount: general_entry_from_amount1
-                  },
-                  to_1: {
-                      description: general_entry_to_desc1,
-                      amount: general_entry_to_amount1
-                  }
-              }
-          };
-
-          console.log(JSON.stringify(general_entry_data, null, 2));
-          
-          const params = new URLSearchParams();
-
-          // Flat properties
-          params.append('account_number', general_entry_data.account_number);
-          params.append('account_name', general_entry_data.account_name);
-          params.append('criteria_text', general_entry_data.criteria_text);
-          params.append('currency', general_entry_data.currency);
-
-          // Nested 'accounting_entry' object
-          params.append('general_entry[number]', general_entry_data.general_entry.number);
-          params.append('general_entry[date]', general_entry_data.general_entry.date);
-          params.append('general_entry[from1][description]', general_entry_data.general_entry.from_1.description);
-          params.append('general_entry[from1][amount]', general_entry_data.general_entry.from_1.amount);
-          params.append('general_entry[to1][description]', general_entry_data.general_entry.to_1.description);
-          params.append('general_entry[to1][amount]', general_entry_data.general_entry.to_1.amount);
-
-          const queryString = params.toString();
-          console.log(queryString);
-
-          var nextPageUrl = "newJournalEntry.html?"+queryString;
-          window.location.href = nextPageUrl;
-
-        }); 
-
-             
+   
     
     </script>
 

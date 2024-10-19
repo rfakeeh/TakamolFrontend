@@ -836,7 +836,7 @@
                               </button>
                             </div>
                             <div class="col-auto">
-                              <button class="btn btn-action" tabindex="0" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-custom-class="custom-popover" data-bs-trigger="hover" data-bs-title="قيد محاسبي جديد" data-bs-content="قم بإنشاء قيد محاسبي جديد تحت أحد المعايير المحاسبية المعدلة الى نظام الاستحقاق">
+                              <button id="create-journal-entry-btn" class="btn btn-action" tabindex="0" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-custom-class="custom-popover" data-bs-trigger="hover" data-bs-title="قيد محاسبي جديد" data-bs-content="قم بإنشاء قيد محاسبي جديد تحت أحد المعايير المحاسبية المعدلة الى نظام الاستحقاق">
                                 <img src="img/png/icon01.png" width="15" height="15" />
                                 <span>قيد محاسبي جديد</span>
                               </button>
@@ -982,7 +982,8 @@
                       <span style="color: #03669D; font-weight:700">رقم الحساب</span>
                     </div>
                     <div class="col" style="padding-left: 10px;">
-                      <span class="analysis-result">001</span>
+                      <span id="account_number" class="analysis-result">001</span>
+                      <input type="hidden" id="account_number_hidden" value="001">
                     </div>
                     <div class="col"></div>
                   </div>
@@ -995,7 +996,8 @@
                       <span style="color: #03669D; font-weight:700">اسم الحساب</span>
                     </div>
                     <div class="col" style="padding-left: 10px;">
-                      <span class="analysis-result">بنك الانماء</span>
+                      <span id="account_name" class="analysis-result">بنك الانماء</span>
+                      <input type="hidden" id="account_name_hidden" value="بنك الانماء">
                     </div>
                     <div class="col"></div>
                   </div>
@@ -1008,7 +1010,8 @@
                       <span style="color: #03669D; font-weight:700">المعيار</span>
                     </div>
                     <div class="col" style="padding-left: 10px;">
-                      <span class="analysis-result">تكاليف الاقتراض</span>
+                      <span id="criteria_text" class="analysis-result">تكاليف الاقتراض</span>
+                      <input type="hidden" id="criteria_text_hidden" value="تكاليف الاقتراض">
                     </div>
                     <div class="col"></div>
                   </div>
@@ -1021,7 +1024,8 @@
                       <span style="color: #03669D; font-weight:700">القيد العام GE</span>
                     </div>
                     <div class="col" style="padding-left: 10px;">
-                      <span class="analysis-result">000003</span>
+                      <span id="general_entry_number" class="analysis-result">000003</span>
+                      <input type="hidden" id="general_entry_number_hidden" value="000003">
                     </div>
                     <div class="col"></div>
                   </div>
@@ -1034,7 +1038,8 @@
                       <span style="color: #03669D; font-weight:700">تاريخ العملية</span>
                     </div>
                     <div class="col" style="padding-left: 10px;">
-                      <span class="analysis-result">01/01/2024</span>
+                      <span id="general_entry_date" class="analysis-result">01/01/2024</span>
+                      <input type="hidden" id="general_entry_date_hidden" value="01/01/2024">
                     </div>
                     <div class="col"></div>
                   </div>
@@ -1047,7 +1052,8 @@
                       <span style="color: #03669D; font-weight:700">العملة</span>
                     </div>
                     <div class="col" style="padding-left: 10px;">
-                      <span class="analysis-result">ريال سعودي</span>
+                      <span id="currency" class="analysis-result">ريال سعودي</span>
+                      <input type="hidden" id="currency_hidden" value="ريال سعودي">
                     </div>
                     <div class="col"></div>
                   </div>
@@ -1067,10 +1073,12 @@
                       <span style="color: #03669D; font-weight:700">من</span>
                     </div>
                     <div class="col-auto" style="padding-left: 10px;">
-                      <span>مبنى المستودع</span>
+                      <span id="general_entry_from_desc1">مبنى المستودع</span>
+                      <input type="hidden" id="general_entry_from_desc1_hidden" value="مبنى المستودع">
                     </div>
                     <div class="col" style="padding-left: 10px;">
-                      <span>10000</span>
+                      <span id="general_entry_from_amount1">10000</span>
+                      <input type="hidden" id="general_entry_from_amount1_hidden" value="10000">
                     </div>
                   </div>
 
@@ -1080,10 +1088,12 @@
                       <span style="color: #03669D; font-weight:700">الى</span>
                     </div>
                     <div class="col-auto" style="padding-left: 10px;">
-                      <span>النقدية</span>
+                      <span id="general_entry_to_desc1">النقدية</span>
+                      <input type="hidden" id="general_entry_to_desc1_hidden" value="النقدية">
                     </div>
                     <div class="col" style="padding-left: 10px;">
-                      <span>10000</span>
+                      <span id="general_entry_to_amount1">10000</span>
+                      <input type="hidden" id="general_entry_to_amount1_hidden" value="10000">
                     </div>
                   </div>
 
@@ -1454,7 +1464,75 @@
           }
 
 
-        });      
+        });
+
+        document.getElementById('create-journal-entry-btn').addEventListener('click', function (event) {
+              var nextPageUrl = "newJournalEntry.html";
+              if (criteria != null)
+                nextPageUrl += "?criteria="+criteria;
+              window.location.href = nextPageUrl;
+        });
+
+        document.getElementById('add-analysis-result').addEventListener('click', function (event) {
+
+          // Getting input field values
+          const account_number = document.getElementById('account_number_hidden').value;
+          const account_name = document.getElementById('account_name_hidden').value;
+          const criteria_text = document.getElementById('criteria_text_hidden').value;
+          const general_entry_number = document.getElementById('general_entry_number_hidden').value;
+          const general_entry_date = document.getElementById('general_entry_date_hidden').value;
+          const currency = document.getElementById('currency_hidden').value;
+          const general_entry_from_desc1 = document.getElementById('general_entry_from_desc1_hidden').value;
+          const general_entry_from_amount1 = document.getElementById('general_entry_from_amount1_hidden').value;
+          const general_entry_to_desc1 = document.getElementById('general_entry_to_desc1_hidden').value;
+          const general_entry_to_amount1 = document.getElementById('general_entry_to_amount1_hidden').value;
+
+          // Filling the transaction object
+          const general_entry_data = {
+              account_number: account_number,
+              account_name: account_name,
+              criteria_text: criteria_text,
+              currency: currency,
+              general_entry: {
+                  number: general_entry_number,
+                  date: general_entry_date,
+                  from_1: {
+                      description: general_entry_from_desc1,
+                      amount: general_entry_from_amount1
+                  },
+                  to_1: {
+                      description: general_entry_to_desc1,
+                      amount: general_entry_to_amount1
+                  }
+              }
+          };
+
+          console.log(JSON.stringify(general_entry_data, null, 2));
+          
+          const params = new URLSearchParams();
+
+          // Flat properties
+          params.append('account_number', general_entry_data.account_number);
+          params.append('account_name', general_entry_data.account_name);
+          params.append('criteria_text', general_entry_data.criteria_text);
+          params.append('currency', general_entry_data.currency);
+
+          // Nested 'accounting_entry' object
+          params.append('general_entry[number]', general_entry_data.general_entry.number);
+          params.append('general_entry[date]', general_entry_data.general_entry.date);
+          params.append('general_entry[from1][description]', general_entry_data.general_entry.from_1.description);
+          params.append('general_entry[from1][amount]', general_entry_data.general_entry.from_1.amount);
+          params.append('general_entry[to1][description]', general_entry_data.general_entry.to_1.description);
+          params.append('general_entry[to1][amount]', general_entry_data.general_entry.to_1.amount);
+
+          const queryString = params.toString();
+          console.log(queryString);
+
+          var nextPageUrl = "newJournalEntry.html?"+queryString;
+          window.location.href = nextPageUrl;
+
+        });        
+     
     
     </script>
 
