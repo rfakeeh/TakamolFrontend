@@ -1200,11 +1200,11 @@
                       <span style="color: #03669D; font-weight:700">من</span>
                     </div>
                     <div class="col-auto" style="padding-left: 10px;">
-                      <span id="general_entry_from_desc3">مبنى المستودع</span>
+                      <span id="general_entry_from_desc3">الضريبة</span>
                       <input type="hidden" id="general_entry_from_desc3_hidden" value="مبنى المستودع">
                     </div>
                     <div class="col" style="padding-left: 10px;">
-                      <span id="general_entry_from_amount3">10000</span>
+                      <span id="general_entry_from_amount3">1500</span>
                       <input type="hidden" id="general_entry_from_amount3_hidden" value="10000">
                     </div>
                   </div>
@@ -1219,7 +1219,7 @@
                       <input type="hidden" id="general_entry_to_desc1_hidden" value="النقدية">
                     </div>
                     <div class="col" style="padding-left: 10px;">
-                      <span id="general_entry_to_amount1">10000</span>
+                      <span id="general_entry_to_amount1">21500</span>
                       <input type="hidden" id="general_entry_to_amount1_hidden" value="10000">
                     </div>
                   </div>
@@ -1608,39 +1608,40 @@
                           }
                       };
                     }
+                    console.log(data.account_number);
+                    if (data.account_number != null) {
+                      // Getting input field values
+                      document.getElementById('account_number_hidden').value = data.account_number;
+                      document.getElementById('account_name_hidden').value = data.account_name;
+                      document.getElementById('criteria_text_hidden').value = data.criteria_text;
+                      document.getElementById('general_entry_number_hidden').value = data.general_entry.number;
+                      document.getElementById('general_entry_date_hidden').value = data.general_entry.date;
+                      document.getElementById('currency_hidden').value = data.currency;
+                      document.getElementById('general_entry_from_desc1_hidden').value = data.general_entry.from_1.description;
+                      document.getElementById('general_entry_from_amount1_hidden').value = data.general_entry.from_1.amount;
+                      document.getElementById('general_entry_from_desc2_hidden').value = data.general_entry.from_2.description;
+                      document.getElementById('general_entry_from_amount2_hidden').value = data.general_entry.from_2.amount;
+                      document.getElementById('general_entry_from_desc3_hidden').value = data.general_entry.from_3.description;
+                      document.getElementById('general_entry_from_amount3_hidden').value = data.general_entry.from_3.amount;
+                      document.getElementById('general_entry_to_desc1_hidden').value = data.general_entry.to_1.description;
+                      document.getElementById('general_entry_to_amount1_hidden').value = data.general_entry.to_1.amount;
 
-                    // Getting input field values
-                    document.getElementById('account_number_hidden').value = data.account_number;
-                    document.getElementById('account_name_hidden').value = data.account_name;
-                    document.getElementById('criteria_text_hidden').value = data.criteria_text;
-                    document.getElementById('general_entry_number_hidden').value = data.general_entry.number;
-                    document.getElementById('general_entry_date_hidden').value = data.general_entry.date;
-                    document.getElementById('currency_hidden').value = data.currency;
-                    document.getElementById('general_entry_from_desc1_hidden').value = data.general_entry.from_1.description;
-                    document.getElementById('general_entry_from_amount1_hidden').value = data.general_entry.from_1.amount;
-                    document.getElementById('general_entry_from_desc2_hidden').value = data.general_entry.from_2.description;
-                    document.getElementById('general_entry_from_amount2_hidden').value = data.general_entry.from_2.amount;
-                    document.getElementById('general_entry_from_desc3_hidden').value = data.general_entry.from_3.description;
-                    document.getElementById('general_entry_from_amount3_hidden').value = data.general_entry.from_3.amount;
-                    document.getElementById('general_entry_to_desc1_hidden').value = data.general_entry.to_1.description;
-                    document.getElementById('general_entry_to_amount1_hidden').value = data.general_entry.to_1.amount;
+                      document.getElementById('account_number').innerHTML = data.account_number;
+                      document.getElementById('account_name').innerHTML = data.account_name;
+                      document.getElementById('criteria_text').innerHTML = data.criteria_text;
+                      document.getElementById('general_entry_number').innerHTML = data.general_entry.number;
+                      document.getElementById('general_entry_date').innerHTML = data.general_entry.date;
+                      document.getElementById('currency').innerHTML = data.currency;
+                      document.getElementById('general_entry_from_desc1').innerHTML = data.general_entry.from_1.description;
+                      document.getElementById('general_entry_from_amount1').innerHTML = data.general_entry.from_1.amount;
+                      document.getElementById('general_entry_from_desc2').innerHTML = data.general_entry.from_2.description;
+                      document.getElementById('general_entry_from_amount2').innerHTML = data.general_entry.from_2.amount;
+                      document.getElementById('general_entry_from_desc3').innerHTML = data.general_entry.from_3.description;
+                      document.getElementById('general_entry_from_amount3').innerHTML = data.general_entry.from_3.amount;
+                      document.getElementById('general_entry_to_desc1').innerHTML = data.general_entry.to_1.description;
+                      document.getElementById('general_entry_to_amount1').innerHTML = data.general_entry.to_1.amount;
 
-                    document.getElementById('account_number').innerHTML = data.account_number;
-                    document.getElementById('account_name').innerHTML = data.account_name;
-                    document.getElementById('criteria_text').innerHTML = data.criteria_text;
-                    document.getElementById('general_entry_number').innerHTML = data.general_entry.number;
-                    document.getElementById('general_entry_date').innerHTML = data.general_entry.date;
-                    document.getElementById('currency').innerHTML = data.currency;
-                    document.getElementById('general_entry_from_desc1').innerHTML = data.general_entry.from_1.description;
-                    document.getElementById('general_entry_from_amount1').innerHTML = data.general_entry.from_1.amount;
-                    document.getElementById('general_entry_from_desc2').innerHTML = data.general_entry.from_2.description;
-                    document.getElementById('general_entry_from_amount2').innerHTML = data.general_entry.from_2.amount;
-                    document.getElementById('general_entry_from_desc3').innerHTML = data.general_entry.from_3.description;
-                    document.getElementById('general_entry_from_amount3').innerHTML = data.general_entry.from_3.amount;
-                    document.getElementById('general_entry_to_desc1').innerHTML = data.general_entry.to_1.description;
-                    document.getElementById('general_entry_to_amount1').innerHTML = data.general_entry.to_1.amount;
-
-
+                    }
                     /////
                     // Show all hidden elements with class "analysis-result"
                     document.querySelectorAll('.analysis-result').forEach(function(element) {
