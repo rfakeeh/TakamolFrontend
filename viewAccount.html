@@ -1553,34 +1553,61 @@
                     /////
 
                     var data = {};
-
-                    data = {
-                        account_number: "005",
-                        account_name: "باصات مرسيدس",
-                        criteria_text: "المخزون",
-                        currency: "ريال سعودي",
-                        general_entry: {
-                            number: "1234567",
-                            date: "05/07/2026",
-                            from_1: {
-                                description: "باص مرسيدس 2023",
-                                amount: "26,160,00"
-                            },
-                            from_2: {
-                                description: "باص مرسيدس 2022",
-                                amount: "180,000"
-                            },
-                            from_3: {
-                                description: "الضريبة",
-                                amount: "3,951,000"
-                            },
-                            to_1: {
-                                description: "حساب النقدية",
-                                amount: "30,291,000"
-                            }
-                        }
-                    };
-
+                    if (document.getElementById('upload-file-name').value.includes('bus')) {
+                      data = {
+                          account_number: "005",
+                          account_name: "باصات مرسيدس",
+                          criteria_text: "المخزون",
+                          currency: "ريال سعودي",
+                          general_entry: {
+                              number: "1234567",
+                              date: "05/07/2026",
+                              from_1: {
+                                  description: "باص مرسيدس 2023",
+                                  amount: "26,160,00"
+                              },
+                              from_2: {
+                                  description: "باص مرسيدس 2022",
+                                  amount: "180,000"
+                              },
+                              from_3: {
+                                  description: "الضريبة",
+                                  amount: "3,951,000"
+                              },
+                              to_1: {
+                                  description: "حساب النقدية",
+                                  amount: "30,291,000"
+                              }
+                          }
+                      };
+                    } else if (document.getElementById('upload-file-name').value.includes('water')) {
+                      data = {
+                          account_number: "006",
+                          account_name: "شركة الصدف للمرطبات",
+                          criteria_text: "مشتريات",
+                          currency: "ريال سعودي",
+                          general_entry: {
+                              number: "0000214",
+                              date: "10/11/2023",
+                              from_1: {
+                                  description: "مياه معدنية",
+                                  amount: "3000"
+                              },
+                              from_2: {
+                                  description: "مياه غازية",
+                                  amount: "1800"
+                              },
+                              from_3: {
+                                  description: "الضريبة",
+                                  amount: "720"
+                              },
+                              to_1: {
+                                  description: "مورد - شركة الصدف للمشروبات",
+                                  amount: "5520"
+                              }
+                          }
+                      };
+                    }
 
                     // Getting input field values
                     document.getElementById('account_number_hidden').value = data.account_number;
